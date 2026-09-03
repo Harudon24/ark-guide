@@ -196,9 +196,51 @@ footer{padding:8px 4px 0;color:#58757b;font-size:11px}
  .subtitle,.note,.setting .desc,.preset ul,.rule ul,.friend-item .k{color:#555}
  .value,.metric .value,.friend-intro,.friend-item .v{color:#111}.section{break-inside:avoid}
 }
+
+.top-nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 16px;
+  background:rgba(7,16,21,.92);
+  border-bottom:1px solid rgba(79,228,234,.16);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.top-nav a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(79,228,234,.24);
+  border-radius:10px;
+  background:#102a32;
+  color:#e8fdff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+}
+.top-nav a:hover{
+  background:#163942;
+  border-color:rgba(79,228,234,.5);
+}
+.top-nav .page-name{
+  color:#78959d;
+  font-size:12px;
+}
+
 </style>
 </head>
 <body>
+<nav class="top-nav">
+  <a href="index.html" aria-label="ARK Guideトップへ戻る">← ARK Guide</a>
+  <span class="page-name">サーバー設定</span>
+</nav>
+
 <div class="shell">
  <div class="topbar">
  <div class="brand"><span class="brandmark"></span>ARK SERVER PROFILE</div>
