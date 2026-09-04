@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARK Guide Preview</title>
+<style>
+html,body{margin:0;height:100%;background:#050a0d;color:#e8f8fa;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif}
+body{display:grid;grid-template-rows:auto 1fr}
+.bar{display:flex;gap:10px;align-items:center;padding:10px 14px;background:#0a1419;border-bottom:1px solid #24434d;position:relative;z-index:2}
+.title{font-weight:800;white-space:nowrap;color:#8ef4f7}.file{color:#a9bec4;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.spacer{flex:1}
+button,a{font:inherit}button{border:1px solid #315460;background:#10242c;color:#eafcfd;border-radius:9px;padding:7px 10px;cursor:pointer}button:hover{border-color:#4fe4ea}.mainlink{color:#9fb6bc;text-decoration:none;font-size:13px;white-space:nowrap}
+iframe{width:100%;height:100%;border:0;background:white}.msg{padding:26px;color:#b8cbd0}.err{color:#ffb1b1}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="title">PREVIEW</div>
+  <div class="file" id="fileLabel"></div>
+  <div class="spacer"></div>
+  <button id="reloadBtn" type="button">再読込</button>
+  <a class="mainlink" href="index.html">本番へ</a>
+</div>
+<div id="stage" class="msg">読み込み中...</div>
+<script>
+const OWNER='Harudon24';
+const REPO='ark-guide';
+const BRANCH='preview';
+const params=new URLSearchParams(location.search);
+let file=params.get('file')||'index.html';
+const stage=document.getElementById('stage');
+const fileLabel=document.getElementById('fileLabel');
+const reloadBtn=document.getElementById('reloadBtn');
+
+function cleanPath(p){
+  p=(p||'index.html').split('#')[0].split('?')[0];
+  p=p.replace(/^\.\//,'');
+  const parts=[];
+  for(const part of p.split('/')){
+    if(!part||part==='.') continue;
+    if(part==='..') parts.pop(); else parts.push(part);
+  }
+  return parts.join('/')||'index.html';
+}
+
+async function load(target=file){
+  file=cleanPath(target);
+  fileLabel.textContent='preview / '+file;
+  const rawBase=`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/`;
+  const url=rawBase+file+'?t='+Date.now();
+  stage.className='msg';
+  stage.textContent='読み込み中...';
+  try{
+    const res=await fetch(url,{cache:'no-store'});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    let html=await res.text();
+    const dir=file.includes('/')?file.slice(0,file.lastIndexOf('/')+1):'';
+    const baseTag=`<base href="${rawBase}${dir}">`;
+    const bridge=`<script>document.addEventListener('click',function(e){const a=e.target.closest('a');if(!a)return;const h=a.getAttribute('href');if(!h||h.startsWith('#')||/^(https?:|mailto:|javascript:)/i.test(h))return;e.preventDefault();parent.postMessage({type:'preview-nav',href:h},'*');});<\/script>`;
+    if(/<head[^>]*>/i.test(html)) html=html.replace(/<head([^>]*)>/i,`<head$1>${baseTag}`);
+    else html=baseTag+html;
+    if(/<\/body>/i.test(html)) html=html.replace(/<\/body>/i,bridge+'</body>');
+    else html+=bridge;
+    const iframe=document.createElement('iframe');
+    iframe.srcdoc=html;
+    stage.replaceWith(iframe);
+    iframe.id='stage';
+    window.stage=iframe;
+  }catch(err){
+    const current=document.getElementById('stage');
+    const box=document.createElement('div');
+    box.id='stage';box.className='msg err';
+    box.textContent=`previewブランチの ${file} を読み込めませんでした (${err.message})`;
+    current.replaceWith(box);
+  }
+}
+
+window.addEventListener('message',e=>{
+  if(!e.data||e.data.type!=='preview-nav') return;
+  const href=e.data.href;
+  const base=file.includes('/')?file.slice(0,file.lastIndexOf('/')+1):'';
+  const next=cleanPath(base+href);
+  const u=new URL(location.href);u.searchParams.set('file',next);history.pushState({},'',u);
+  load(next);
+});
+
+reloadBtn.addEventListener('click',()=>load(file));
+window.addEventListener('popstate',()=>{const p=new URLSearchParams(location.search);load(p.get('file')||'index.html')});
+load(file);
+</script>
+</body>
+</html>
