@@ -20,10 +20,56 @@ h1{font-size:clamp(34px,6vw,56px);margin:8px 0 8px}.lead{color:#b7cbd0;margin:0 
 .card h2{margin:9px 0 8px;font-size:24px}.card p{margin:0;color:#a9bec4;line-height:1.8;font-size:14px}
 .arrow{margin-top:18px;color:var(--accent);font-weight:800}
 @media(max-width:700px){.grid{grid-template-columns:1fr}}
+
+/* Common top navigation — matches the Server Settings page */
+.top-nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 16px;
+  background:rgba(7,16,21,.92);
+  border-bottom:1px solid rgba(79,228,234,.16);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.top-nav a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(79,228,234,.24);
+  border-radius:10px;
+  background:#102a32;
+  color:#e8fdff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+}
+.top-nav a:hover{
+  background:#163942;
+  border-color:rgba(79,228,234,.5);
+}
+.top-nav .page-name{
+  color:#78959d;
+  font-size:12px;
+}
+.top-nav-links{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
 </style>
 </head>
 <body>
-<nav><a href="index.html">← ARK Guide</a></nav>
+<nav class="top-nav">
+  <a href="index.html" aria-label="TOPへ戻る">← TOP</a>
+</nav>
 <main>
   <div class="kicker">ARK: SURVIVAL EVOLVED / BEGINNER</div>
   <h1>チュートリアル</h1>

@@ -80,12 +80,56 @@ h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}
   .num{width:46px;height:46px}
   .address-box{align-items:flex-start;flex-direction:column}
 }
+
+/* Common top navigation — matches the Server Settings page */
+.top-nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 16px;
+  background:rgba(7,16,21,.92);
+  border-bottom:1px solid rgba(79,228,234,.16);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.top-nav a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(79,228,234,.24);
+  border-radius:10px;
+  background:#102a32;
+  color:#e8fdff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+}
+.top-nav a:hover{
+  background:#163942;
+  border-color:rgba(79,228,234,.5);
+}
+.top-nav .page-name{
+  color:#78959d;
+  font-size:12px;
+}
+.top-nav-links{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
 </style>
 </head>
 <body>
 <nav class="top-nav">
-  <a href="index.html">← ARK Guide</a>
-  <span>接続手順</span>
+  <a href="index.html" aria-label="TOPへ戻る">← TOP</a>
+  <span class="page-name">接続手順</span>
 </nav>
 
 <main class="wrap">
