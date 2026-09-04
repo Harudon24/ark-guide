@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARK 初心者チュートリアル - 2×2の最初の拠点</title>
+<style>
+:root{
+  --bg:#071015;
+  --panel:#0e1b22;
+  --panel2:#11242c;
+  --line:#294750;
+  --text:#eef8fb;
+  --muted:#9db5bc;
+  --accent:#4fe4ea;
+  --accent2:#a4f9fc;
+  --green:#7fe3a6;
+  --amber:#efc36f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),
+    linear-gradient(180deg,#071015,#09151b 60%,#071015);
+  line-height:1.75;
+}
+.top-nav{
+  position:sticky;top:0;z-index:1000;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px;
+  background:rgba(7,16,21,.94);
+  border-bottom:1px solid rgba(79,228,234,.15);
+  backdrop-filter:blur(10px);
+}
+.top-nav a{
+  color:#edfeff;text-decoration:none;font-weight:700;font-size:13px;
+  padding:8px 12px;border-radius:10px;
+  border:1px solid rgba(79,228,234,.24);
+  background:#102a32;
+}
+.top-nav span{font-size:12px;color:#7f9ba3}
+.wrap{width:min(1020px,calc(100% - 28px));margin:auto;padding:34px 0 56px}
+.hero{
+  padding:30px;
+  border:1px solid rgba(79,228,234,.18);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(79,228,234,.09),rgba(79,228,234,.025));
+  box-shadow:0 24px 60px rgba(0,0,0,.24);
+}
+.kicker{
+  color:var(--accent2);
+  font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+}
+h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}
+.hero p{margin:0;color:#c6d8dc}
+.goal{
+  margin-top:16px;padding:13px 15px;
+  border-left:4px solid var(--accent);
+  border-radius:10px;background:#0b1a20;
+  color:#dcebed;font-size:14px;
+}
+.section-title{
+  margin:28px 2px 12px;
+  color:#829fa7;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--panel);
+  padding:20px;
+}
+.card h2{margin:0 0 8px;font-size:21px}
+.card p{margin:0;color:#bfd0d5;font-size:14px}
+.pieces{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px;
+}
+.piece{
+  padding:10px 12px;border:1px solid #294750;border-radius:10px;
+  background:#0a171d;font-size:13px;
+}
+.piece b{color:var(--accent2)}
+.steps{display:grid;gap:14px}
+.step{
+  display:grid;grid-template-columns:58px 1fr;gap:16px;
+  padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel);
+}
+.num{
+  width:44px;height:44px;display:grid;place-items:center;
+  border-radius:13px;border:1px solid rgba(79,228,234,.28);
+  background:#103039;color:#a8fbfd;font-weight:900;
+}
+.step h3{margin:0 0 5px;font-size:18px}
+.step p{margin:0;color:#c2d3d8;font-size:14px}
+.tip{
+  margin-top:10px;padding:9px 11px;border-left:3px solid var(--green);
+  border-radius:8px;background:#0b1b16;color:#bfdfca;font-size:13px;
+}
+.warn{
+  margin-top:10px;padding:9px 11px;border-left:3px solid var(--amber);
+  border-radius:8px;background:#1d180f;color:#e0d0a9;font-size:13px;
+}
+.layout{
+  display:grid;grid-template-columns:repeat(2,120px);gap:8px;
+  justify-content:center;margin:18px 0;
+}
+.tile{
+  height:120px;
+  display:grid;place-items:center;
+  border:2px solid #3c6874;
+  background:linear-gradient(145deg,#122a31,#0d1d23);
+  color:#d9f8fb;font-weight:800;
+}
+.front{
+  text-align:center;color:#8fabaf;font-size:12px;margin-top:2px;
+}
+.inside{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;
+}
+.inside div{
+  padding:11px;border:1px solid var(--line);border-radius:11px;background:#0a171d;
+}
+.inside b{display:block;color:#eaf8fa;font-size:13px}
+.inside span{color:#91a8ae;font-size:12px}
+.check{
+  list-style:none;padding:0;margin:0;display:grid;gap:8px;
+}
+.check li{
+  position:relative;padding:10px 12px 10px 38px;
+  border:1px solid var(--line);border-radius:11px;background:#0a171d;color:#d8e7ea;
+}
+.check li:before{
+  content:"✓";position:absolute;left:13px;top:9px;color:var(--green);font-weight:900;
+}
+.footer{margin-top:28px;text-align:center;color:#667f87;font-size:12px}
+@media(max-width:760px){
+  .grid{grid-template-columns:1fr}
+  .step{grid-template-columns:1fr}
+  .layout{grid-template-columns:repeat(2,minmax(100px,130px))}
+  .tile{height:100px}
+}
+
+.controls{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:16px;
+}
+.control{
+  padding:12px 13px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#0a171d;
+}
+.key{
+  display:inline-grid;
+  min-width:34px;
+  height:30px;
+  place-items:center;
+  padding:0 8px;
+  margin-right:7px;
+  border:1px solid #416774;
+  border-bottom-width:3px;
+  border-radius:7px;
+  background:#122b33;
+  color:#e9feff;
+  font-family:"Cascadia Mono","Consolas",monospace;
+  font-weight:800;
+}
+.control b{font-size:13px}
+.control span{display:block;margin-top:5px;color:#8fa9b0;font-size:12px}
+.flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin-top:12px;
+}
+.flow .box{
+  padding:8px 11px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#0a171d;
+  color:#d9eaed;
+  font-size:13px;
+}
+.flow .arrow{color:var(--accent);font-weight:900}
+.ui-note{
+  margin-top:12px;
+  padding:12px 13px;
+  border:1px solid rgba(79,228,234,.16);
+  border-radius:12px;
+  background:#0a1a20;
+  color:#bdd0d5;
+  font-size:13px;
+}
+@media(max-width:760px){
+  .controls{grid-template-columns:1fr}
+}
+
+
+.stat-plan{
+  display:grid;
+  gap:12px;
+  margin-top:14px;
+}
+.stat-stage{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:14px;
+  align-items:start;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#0a171d;
+}
+.stat-stage .stage{
+  color:var(--accent2);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.stat-stage b{
+  color:#edf9fb;
+}
+.stat-stage p{
+  margin:4px 0 0;
+  color:#9fb5bb;
+  font-size:13px;
+}
+.priority{
+  margin-top:14px;
+  padding:13px 15px;
+  border-left:4px solid var(--accent);
+  border-radius:10px;
+  background:#0b1a20;
+  color:#dcebed;
+  font-size:14px;
+}
+.stat-note{
+  margin-top:12px;
+  padding:11px 13px;
+  border-left:3px solid var(--amber);
+  border-radius:8px;
+  background:#1d180f;
+  color:#e0d0a9;
+  font-size:13px;
+}
+@media(max-width:760px){
+  .stat-stage{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html">← ARK Guide</a>
+  <span>初心者チュートリアル</span>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">ARK: Survival Evolved / Beginner Tutorial</div>
+    <h1>2×2の最初の拠点を作る</h1>
+    <p>ARKを始めてから、最低限の道具を作って「寝る・収納する・安全にログアウトする」ための小さな拠点を完成させるまで。</p>
+    <div class="goal">目標：2×2の土台に、入口・壁・屋根を付けた小さな拠点を完成させる。</div>
+  </section>
+
+
+  <div class="section-title">まず覚える操作</div>
+  <section class="card">
+    <h2>インベントリ・作成・エングラム</h2>
+    <p>PC版の初期キー設定では、序盤はこの3つを覚えておけば十分です。</p>
+
+    <div class="controls">
+      <div class="control">
+        <div><span class="key">I</span><b>インベントリを開く</b></div>
+        <span>所持品、ステータス、エングラム画面を確認するときに使う。</span>
+      </div>
+      <div class="control">
+        <div><span class="key">V</span><b>作成画面を開く</b></div>
+        <span>その場で作れるアイテム一覧をすぐ開く。インベントリ内でもVで作成画面へ切り替えられる。</span>
+      </div>
+      <div class="control">
+        <div><span class="key">E</span><b>拾う・使う</b></div>
+        <span>地面の石を拾う、ドアを開ける、設置物を使うときなどに使う。</span>
+      </div>
+    </div>
+
+    <div class="ui-note">
+      <b>エングラムを覚える流れ：</b>
+      <div class="flow">
+        <span class="box">Iでインベントリ</span>
+        <span class="arrow">→</span>
+        <span class="box">上部の「エングラム」タブ</span>
+        <span class="arrow">→</span>
+        <span class="box">覚えたい項目を選択</span>
+        <span class="arrow">→</span>
+        <span class="box">エングラムポイントを消費して解放</span>
+      </div>
+    </div>
+
+    <div class="ui-note">
+      <b>アイテムを作る流れ：</b>
+      <div class="flow">
+        <span class="box">Vで作成画面</span>
+        <span class="arrow">→</span>
+        <span class="box">作りたいアイテムを選ぶ</span>
+        <span class="arrow">→</span>
+        <span class="box">必要素材を確認</span>
+        <span class="arrow">→</span>
+        <span class="box">「作成」</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="section-title">おすすめの能力値振り</div>
+  <section class="card">
+    <h2>序盤は「重量」を最優先</h2>
+    <p>
+      このサーバーではレベルアップ時の重量上昇を少し高めにしているので、
+      序盤は重量に振ると特に快適です。素材集めや建築で何度も往復しなくて済むようになります。
+    </p>
+
+    <div class="priority">
+      おすすめ優先度：<b>重量 300〜400</b> ＞ <b>体力 200〜300</b> ≒ <b>忍耐 2回くらい</b> ＞ <b>スタミナ</b>
+    </div>
+
+    <div class="stat-plan">
+      <div class="stat-stage">
+        <div class="stage">STEP 1</div>
+        <div>
+          <b>まず重量を300くらいまで</b>
+          <p>石・木材・わらを集めて拠点を作る序盤では一番体感差が大きい。迷ったら最初は重量でOK。</p>
+        </div>
+      </div>
+
+      <div class="stat-stage">
+        <div class="stage">STEP 2</div>
+        <div>
+          <b>忍耐を2回ほど上げる</b>
+          <p>暑さ・寒さへの耐性や気絶耐性を少しだけ補強。The Island序盤なら、まず2回程度で十分。</p>
+        </div>
+      </div>
+
+      <div class="stat-stage">
+        <div class="stage">STEP 3</div>
+        <div>
+          <b>体力を200くらいまで</b>
+          <p>野生恐竜に襲われたときの事故死を減らす。序盤の探索がかなり安心になる。</p>
+        </div>
+      </div>
+
+      <div class="stat-stage">
+        <div class="stage">STEP 4</div>
+        <div>
+          <b>重量を350〜400へ</b>
+          <p>金属・木材・石などを本格的に集め始めると、300でも足りなくなってくるので追加。</p>
+        </div>
+      </div>
+
+      <div class="stat-stage">
+        <div class="stage">STEP 5</div>
+        <div>
+          <b>体力を250〜300へ</b>
+          <p>洞窟や危険地帯へ行くようになったら追加。200で困っていなければ急がなくてOK。</p>
+        </div>
+      </div>
+
+      <div class="stat-stage">
+        <div class="stage">必要なら</div>
+        <div>
+          <b>スタミナを150〜200くらいまで</b>
+          <p>走る・泳ぐ・近接攻撃で息切れが気になってきたら上げる。序盤は重量や体力より優先度低め。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-note">
+      能力値は後から「もう少し欲しい」と感じたものを追加すればOK。
+      最初から完成形を決める必要はありません。特に序盤は重量を多めにしておくと遊びやすいです。
+    </div>
+  </section>
+
+  <div class="section-title">完成イメージ</div>
+  <section class="grid">
+    <div class="card">
+      <h2>必要な建築パーツ</h2>
+      <p>最初はわら建築でOK。あとから木や石に置き換えられます。</p>
+      <div class="pieces">
+        <div class="piece"><b>4</b> × 土台</div>
+        <div class="piece"><b>7</b> × 壁</div>
+        <div class="piece"><b>1</b> × ドア枠</div>
+        <div class="piece"><b>1</b> × ドア</div>
+        <div class="piece"><b>4</b> × 天井</div>
+        <div class="piece"><b>1+</b> × 収納箱</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2×2の土台</h2>
+      <div class="layout">
+        <div class="tile">土台</div>
+        <div class="tile">土台</div>
+        <div class="tile">土台</div>
+        <div class="tile">土台</div>
+      </div>
+      <div class="front">↑ どこか1面を入口にする</div>
+    </div>
+  </section>
+
+  <div class="section-title">手順</div>
+  <section class="steps">
+    <article class="step">
+      <div class="num">01</div>
+      <div>
+        <h3>まず石・木・わら・繊維を集める</h3>
+        <p>地面の石を拾い、木や草むらから素材を集めます。最初は大量に集めなくてもOK。</p>
+        <div class="tip">草むらからは繊維とベリー、木からは木材とわらが取れます。</div>
+        <div class="warn"><b>草むらや地面の石を拾うときは素手にする。</b><br>
+        ピッケルや斧などの道具を持ったままだと、序盤の「手で拾う・手で採る」採取ができません。
+        道具をいったんしまってから、草むらや地面の石に近づいて採取してください。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">02</div>
+      <div>
+        <h3>Vを押して石のピッケルを作る</h3>
+        <p><span class="key">V</span>を押すと「作成」画面が開きます。最初から覚えている<strong>石のピッケル</strong>を選び、必要素材が揃っていれば「作成」を押します。</p>
+        <div class="flow">
+          <span class="box">V</span>
+          <span class="arrow">→</span>
+          <span class="box">石のピッケルを選択</span>
+          <span class="arrow">→</span>
+          <span class="box">作成</span>
+        </div>
+        <div class="tip">作った道具はインベントリに入ります。ホットバーにドラッグしておくと、数字キーですぐ持ち替えられます。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">03</div>
+      <div>
+        <h3>Iを押してレベルアップ → エングラムを解放</h3>
+        <p><span class="key">I</span>でインベントリを開きます。レベルアップできるときは、中央のステータス欄にある<strong>「＋」</strong>を押して好きな能力を1つ上げます。</p>
+        <p style="margin-top:8px;">そのあと画面上部の<strong>「エングラム」タブ</strong>へ移動し、レベル4になったら<strong>わらの土台・壁・ドア枠・ドア・天井</strong>を優先して覚えます。収納箱もあると便利です。</p>
+        <div class="flow">
+          <span class="box">I</span>
+          <span class="arrow">→</span>
+          <span class="box">能力値の「＋」</span>
+          <span class="arrow">→</span>
+          <span class="box">エングラムタブ</span>
+          <span class="arrow">→</span>
+          <span class="box">建築エングラムを解放</span>
+        </div>
+        <div class="tip">エングラム＝「作り方を覚える」こと。覚えただけではアイテムは手に入らないので、その後Vの作成画面から実際に作ります。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">04</div>
+      <div>
+        <h3>拠点を作る場所を決める</h3>
+        <p>最初は水場から遠すぎず、できるだけ平らで、危険な肉食恐竜が少ない場所を選びます。</p>
+        <div class="warn">水辺ギリギリや、恐竜が頻繁に通る場所に建てると壊されやすいので少し離すのがおすすめ。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">05</div>
+      <div>
+        <h3>Vで建築パーツを作って、土台を4枚並べる</h3>
+        <p>まず<span class="key">V</span>で作成画面を開き、<strong>わらの土台を4枚</strong>作ります。完成した土台をホットバーに入れ、数字キーで持って地面に設置します。</p>
+        <div class="flow">
+          <span class="box">Vで作成</span>
+          <span class="arrow">→</span>
+          <span class="box">土台×4</span>
+          <span class="arrow">→</span>
+          <span class="box">ホットバーへ</span>
+          <span class="arrow">→</span>
+          <span class="box">数字キーで持つ</span>
+          <span class="arrow">→</span>
+          <span class="box">クリックで設置</span>
+        </div>
+        <p style="margin-top:10px;">まず1枚置き、その横にスナップさせる形で4枚を2×2にします。ここが拠点の床になります。</p>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">06</div>
+      <div>
+        <h3>壁・ドア枠・ドアを作って設置する</h3>
+        <p><span class="key">V</span>の作成画面で<strong>壁7枚・ドア枠1個・ドア1個</strong>を作ります。作った物をホットバーから持ち、土台の外周に設置します。</p>
+        <p style="margin-top:8px;">外周を壁で囲み、1か所だけ壁の代わりにドア枠を置きます。最後にドア枠へドアを付ければ入口完成です。</p>
+        <div class="tip">2×2なら外周は8面。7面を壁、1面をドア枠にすればOK。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">07</div>
+      <div>
+        <h3>天井を4枚作って屋根を閉じる</h3>
+        <p><span class="key">V</span>で<strong>わらの天井を4枚</strong>作り、壁の上にスナップさせて設置します。上を4枚で塞げば建物として完成です。</p>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">08</div>
+      <div>
+        <h3>中に最低限の家具を置く</h3>
+        <p>最初は収納箱・たき火・寝袋があれば十分。皮が集まったらベッドを作るとさらに便利です。</p>
+        <div class="inside">
+          <div><b>収納箱</b><span>素材や道具を保管</span></div>
+          <div><b>たき火</b><span>肉を焼く・暖を取る</span></div>
+          <div><b>寝袋</b><span>序盤の緊急リスポーン地点</span></div>
+          <div><b>ベッド</b><span>後で作れば再利用できる拠点リスポーン地点</span></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div class="section-title">ここまでできればOK</div>
+  <section class="card">
+    <ul class="check">
+      <li>2×2の床がある</li>
+      <li>壁・ドア・屋根で囲われている</li>
+      <li>収納箱に素材を預けられる</li>
+      <li>たき火で肉を焼ける</li>
+      <li>寝袋かベッドでリスポーン地点を作っている</li>
+    </ul>
+  </section>
+
+  <div class="section-title">次にやること</div>
+  <section class="card">
+    <p>拠点ができたら、次は<strong>ボーラ・弓・麻酔矢</strong>あたりを準備して、最初の恐竜テイムに進むのがおすすめ。拠点が狭くなってきたら、木や石に建て替えながら少しずつ広げていけばOKです。</p>
+  </section>
+
+  <div class="footer">ARK Guide / Beginner Tutorial</div>
+</main>
+</body>
+</html>

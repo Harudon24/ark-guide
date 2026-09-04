@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARK 初心者チュートリアル - テイム方法</title>
+<style>
+:root{
+  --bg:#071015; --panel:#0e1b22; --line:#294750; --text:#eef8fb;
+  --muted:#9db5bc; --accent:#4fe4ea; --accent2:#a4f9fc;
+  --green:#7fe3a6; --amber:#efc36f; --red:#ef8b79;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh;
+  font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),
+    linear-gradient(180deg,#071015,#09151b 60%,#071015);
+  line-height:1.75;
+}
+.top-nav{
+  position:sticky;top:0;z-index:1000;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px;
+  background:rgba(7,16,21,.94);
+  border-bottom:1px solid rgba(79,228,234,.15);
+  backdrop-filter:blur(10px);
+}
+.top-nav a{
+  color:#edfeff;text-decoration:none;font-weight:700;font-size:13px;
+  padding:8px 12px;border-radius:10px;
+  border:1px solid rgba(79,228,234,.24);
+  background:#102a32;
+}
+.top-nav span{font-size:12px;color:#7f9ba3}
+.wrap{width:min(1020px,calc(100% - 28px));margin:auto;padding:34px 0 56px}
+.hero{
+  padding:30px;
+  border:1px solid rgba(79,228,234,.18);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(79,228,234,.09),rgba(79,228,234,.025));
+  box-shadow:0 24px 60px rgba(0,0,0,.24);
+}
+.kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}
+.hero p{margin:0;color:#c6d8dc}
+.goal{
+  margin-top:16px;padding:13px 15px;border-left:4px solid var(--accent);
+  border-radius:10px;background:#0b1a20;color:#dcebed;font-size:14px;
+}
+.section-title{margin:28px 2px 12px;color:#829fa7;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:20px}
+.card h2{margin:0 0 8px;font-size:21px}.card p{margin:0;color:#bfd0d5;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.steps{display:grid;gap:14px}
+.step{
+  display:grid;grid-template-columns:58px 1fr;gap:16px;
+  padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel);
+}
+.num{
+  width:44px;height:44px;display:grid;place-items:center;
+  border-radius:13px;border:1px solid rgba(79,228,234,.28);
+  background:#103039;color:#a8fbfd;font-weight:900;
+}
+.step h3{margin:0 0 5px;font-size:18px}.step p{margin:0;color:#c2d3d8;font-size:14px}
+.tip,.warn,.danger{
+  margin-top:10px;padding:10px 12px;border-radius:8px;font-size:13px;
+}
+.tip{border-left:3px solid var(--green);background:#0b1b16;color:#bfdfca}
+.warn{border-left:3px solid var(--amber);background:#1d180f;color:#e0d0a9}
+.danger{border-left:3px solid var(--red);background:#1c1010;color:#e2b9b3}
+.key{
+  display:inline-grid;min-width:32px;height:28px;place-items:center;padding:0 7px;
+  border:1px solid #416774;border-bottom-width:3px;border-radius:7px;
+  background:#122b33;color:#e9feff;font-family:"Cascadia Mono","Consolas",monospace;font-weight:800;
+}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.flow .box{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:#0a171d;color:#d9eaed;font-size:13px}
+.flow .arrow{color:var(--accent);font-weight:900}
+.list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.list li{padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#0a171d;color:#d8e7ea}
+.good{color:#9ff0bb;font-weight:700}.bad{color:#f3c27c;font-weight:700}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.compare div{padding:13px;border:1px solid var(--line);border-radius:12px;background:#0a171d}
+.compare b{display:block;margin-bottom:5px}.compare span{color:#93aab0;font-size:12px}
+.footer{margin-top:28px;text-align:center;color:#667f87;font-size:12px}
+@media(max-width:760px){.grid,.compare{grid-template-columns:1fr}.step{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="tutorials.html">← チュートリアル</a>
+  <span>テイム方法</span>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">ARK: Survival Evolved / Beginner Tutorial</div>
+    <h1>最初のテイムをしてみる</h1>
+    <p>ARKで一番よく使う「気絶テイム」の基本を、序盤でも狙いやすい恐竜を例にして覚えます。</p>
+    <div class="goal">目標：恐竜を気絶させる → 好物を入れる → テイム完了まで守る、という流れを覚える。</div>
+  </section>
+
+  <div class="section-title">まず知っておくこと</div>
+  <section class="grid">
+    <div class="card">
+      <h2>テイム方法は恐竜ごとに違う</h2>
+      <p>ARKには複数のテイム方法があります。このページでは、序盤で一番よく使う<strong>「気絶させて餌を入れるタイプ」</strong>を説明します。</p>
+      <div class="compare">
+        <div><b>気絶テイム</b><span>攻撃して気絶させ、インベントリに餌を入れる。</span></div>
+        <div><b>手渡しテイム</b><span>気絶させず、近づいて餌を渡すタイプもいる。</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>最初の練習候補</h2>
+      <p>最初は<strong>パラサウロロフス</strong>や<strong>プテラノドン</strong>など、ボーラが効く相手が練習しやすいです。</p>
+      <ul class="list">
+        <li><b>パラサウロロフス</b>：逃げるのでボーラの練習向き</li>
+        <li><b>プテラノドン</b>：序盤の移動用として便利</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-title">準備するもの</div>
+  <section class="card">
+    <ul class="list">
+      <li><b>ボーラ</b>：逃げる小〜中型恐竜を足止めする</li>
+      <li><b>棍棒 / パチンコ / 麻酔矢</b>：気絶値をためるための道具</li>
+      <li><b>餌</b>：草食ならベリー、肉食なら肉が基本</li>
+      <li><b>ナルコベリー / 麻酔薬</b>：気絶値が下がって起きそうなときに使う</li>
+    </ul>
+    <div class="tip">序盤なら「ボーラ + 棍棒」でも練習できます。麻酔矢が作れるようになるとかなり安全。</div>
+  </section>
+
+  <div class="section-title">テイム手順</div>
+  <section class="steps">
+    <article class="step">
+      <div class="num">01</div>
+      <div>
+        <h3>テイムしたい恐竜を選ぶ</h3>
+        <p>いきなり大型肉食恐竜を狙わず、最初は逃げるタイプや弱めの恐竜から練習します。</p>
+        <div class="warn">恐竜によってはボーラが効かない、気絶テイムではない、特殊な餌が必要などの例外があります。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">02</div>
+      <div>
+        <h3>周囲の安全を確認する</h3>
+        <p>テイム中は恐竜が長時間無防備になります。近くにラプトルなどの肉食恐竜がいない場所で始めます。</p>
+        <div class="danger">気絶させた恐竜が別の恐竜に攻撃されると、テイム効果が下がったり死んだりします。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">03</div>
+      <div>
+        <h3>逃げる相手にはボーラを投げる</h3>
+        <p>ボーラをホットバーに入れ、数字キーで持って投げます。命中すると一定時間その場から動けなくなります。</p>
+        <div class="flow">
+          <span class="box">ボーラをホットバーへ</span>
+          <span class="arrow">→</span>
+          <span class="box">数字キーで装備</span>
+          <span class="arrow">→</span>
+          <span class="box">狙って投げる</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">04</div>
+      <div>
+        <h3>気絶させる</h3>
+        <p>棍棒・パチンコ・麻酔矢などで<strong>気絶値（Torpor）</strong>をためます。気絶すると恐竜が倒れます。</p>
+        <div class="tip">麻酔矢は連射しすぎず、少し間を空けながら撃つとダメージを抑えやすいです。</div>
+        <div class="danger">普通の武器で殴りすぎると、気絶する前に倒してしまいます。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">05</div>
+      <div>
+        <h3>倒れた恐竜のインベントリを開く</h3>
+        <p>気絶した恐竜に近づき、画面に表示される<strong>「インベントリを開く」</strong>操作で中身を開きます。</p>
+        <div class="tip">自分のインベントリから、テイム用の餌を恐竜側へ移動します。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">06</div>
+      <div>
+        <h3>好物を入れる</h3>
+        <p>基本は、草食恐竜にはベリー、肉食恐竜には肉を入れます。恐竜が空腹になると自動で食べて、テイムゲージが進みます。</p>
+        <div class="warn"><b>餌は基本的に手動で食べさせなくてOK。</b> インベントリに入れておけば、自動で食べます。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">07</div>
+      <div>
+        <h3>気絶値を確認する</h3>
+        <p>テイム中に気絶値が0になると起きてしまいます。起きそうならナルコベリーや麻酔薬を恐竜のインベントリに入れ、<strong>「使用」して強制的に食べさせます。</strong></p>
+        <div class="tip">テイム速度4倍のサーバーなので、序盤の恐竜なら長時間待たずに終わることが多いです。</div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">08</div>
+      <div>
+        <h3>テイム完了まで守る</h3>
+        <p>テイムゲージが100%になるまで周囲を警戒します。終わると名前を付ける画面が出て、その恐竜が仲間になります。</p>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="num">09</div>
+      <div>
+        <h3>サドルを作る</h3>
+        <p>乗れる恐竜は、対応するサドルのエングラムを覚えて作成します。サドルを恐竜のインベントリに入れて装備すると騎乗できます。</p>
+        <div class="flow">
+          <span class="box">Iでエングラム</span>
+          <span class="arrow">→</span>
+          <span class="box">サドルを解放</span>
+          <span class="arrow">→</span>
+          <span class="box">作成</span>
+          <span class="arrow">→</span>
+          <span class="box">恐竜に装備</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div class="section-title">覚えておけばOK</div>
+  <section class="card">
+    <ul class="list">
+      <li><span class="good">① 足止め</span>：逃げる相手にはボーラ</li>
+      <li><span class="good">② 気絶</span>：棍棒・パチンコ・麻酔矢など</li>
+      <li><span class="good">③ 餌</span>：恐竜のインベントリに好物を入れる</li>
+      <li><span class="good">④ 維持</span>：起きそうならナルコベリー / 麻酔薬</li>
+      <li><span class="good">⑤ 守る</span>：100%になるまで周囲を警戒</li>
+    </ul>
+  </section>
+
+  <div class="section-title">次に覚えると便利</div>
+  <section class="card">
+    <p><strong>トラップ建築・キブル・テイム効果・恐竜ごとの好物</strong>を覚えると、大型恐竜や高レベル個体も狙いやすくなります。最初は全部覚えず、「ボーラ → 気絶 → 餌」の流れだけ分かれば十分です。</p>
+  </section>
+
+  <div class="footer">ARK Guide / Beginner Tutorial / Taming</div>
+</main>
+</body>
+</html>
