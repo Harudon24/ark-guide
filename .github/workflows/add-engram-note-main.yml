@@ -1,4 +1,4 @@
-name: Add engram guidance to main
+name: Add engram guidance note to main
 
 on:
   push:
@@ -6,48 +6,20 @@ on:
       - main
     paths:
       - '.github/workflows/add-engram-note-main.yml'
-
-permissions:
-  contents: write
+      - '.github/scripts/add_engram_note_main.py'
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
-      - name: Add engram note
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          p = Path('beginner_base_2x2_stats.html')
-          text = p.read_text(encoding='utf-8')
-
-          marker = '''    <div class="ui-note">
-                <b>アイテムを作る流れ：</b>'''
-          # Match actual indentation robustly.
-          marker = '''    <div class="ui-note">
-                <b>アイテムを作る流れ：</b>'''.replace('                ', '      ')
-
-          note = '''    <div class="ui-note">
-                <b>エングラム取得時の注意：</b><br>
-                エングラムポイントには限りがあり、レベルが上がってもすべてのエングラムを覚えられるわけではありません。<br>
-                迷ったら、建築・道具・武器など<strong>今すぐ使うもの</strong>を優先して取得するのがおすすめです。<br>
-                特に<strong>恐竜のサドルは、その恐竜をテイムしてから必要なものだけ取得すればOK</strong>です。
-              </div>
-
-'''.replace('                ', '      ').replace('              </div>', '    </div>')
-
-          if 'エングラム取得時の注意：' not in text:
-              if marker not in text:
-                  raise SystemExit('insert marker not found')
-              text = text.replace(marker, note + marker, 1)
-              p.write_text(text, encoding='utf-8')
-          PY
-
+      - name: Update HTML
+        run: python3 .github/scripts/add_engram_note_main.py
       - name: Commit change
         run: |
           git config user.name "github-actions[bot]"
