@@ -14,6 +14,9 @@
   --muted:#9cb5bc;
   --accent:#4fe4ea;
   --accent2:#a8fbfd;
+  --green:#83e7ae;
+  --amber:#f0c879;
+  --blue:#83bfff;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -79,6 +82,7 @@ h1{
   max-width:760px;
   color:#c9dadd;
   font-size:15px;
+  line-height:1.75;
 }
 .status{
   position:relative;
@@ -99,23 +103,30 @@ h1{
   background:var(--accent);
   box-shadow:0 0 14px rgba(79,228,234,.65);
 }
+.guide-section{margin-top:36px}
+.section-head{margin:0 4px 14px}
 .section-title{
-  margin:34px 4px 14px;
-  color:#8ca7ae;
-  font-size:12px;
-  letter-spacing:.17em;
+  margin:0 0 5px;
+  color:#dcebee;
+  font-size:18px;
   font-weight:800;
-  text-transform:uppercase;
+}
+.section-desc{
+  margin:0;
+  color:#78949b;
+  font-size:12px;
+  line-height:1.6;
 }
 .grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:16px;
 }
+.grid.single{grid-template-columns:1fr}
 .card{
   position:relative;
   display:block;
-  min-height:230px;
+  min-height:210px;
   padding:24px;
   overflow:hidden;
   text-decoration:none;
@@ -142,7 +153,7 @@ h1{
 .icon{
   width:48px;height:48px;
   display:grid;place-items:center;
-  margin-bottom:28px;
+  margin-bottom:20px;
   border-radius:14px;
   border:1px solid rgba(79,228,234,.22);
   background:#12323b;
@@ -150,14 +161,25 @@ h1{
   font-size:22px;
   font-weight:900;
 }
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
 .card small{
-  display:block;
-  margin-bottom:6px;
   color:#74949c;
   font-size:11px;
   letter-spacing:.12em;
   text-transform:uppercase;
 }
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+.badge.required{color:#dffff0;background:rgba(131,231,174,.10);border:1px solid rgba(131,231,174,.30)}
+.badge.reference{color:#fff0c9;background:rgba(240,200,121,.10);border:1px solid rgba(240,200,121,.28)}
+.badge.tutorial{color:#d9edff;background:rgba(131,191,255,.10);border:1px solid rgba(131,191,255,.28)}
 .card h2{
   margin:0 0 8px;
   font-size:24px;
@@ -167,7 +189,15 @@ h1{
   margin:0;
   color:#aebfc4;
   font-size:14px;
+  line-height:1.7;
 }
+.card-note{
+  margin-top:13px;
+  color:#d6e7ea;
+  font-size:12px;
+  font-weight:700;
+}
+.card-note.warn{color:#f4d99f}
 .arrow{
   position:absolute;
   right:22px;
@@ -179,17 +209,19 @@ h1{
   color:var(--accent2);
   font-size:18px;
 }
-.summary{
-  margin-top:18px;
+.notice{
+  margin-top:22px;
   padding:17px 18px;
-  border:1px solid rgba(79,228,234,.12);
+  border:1px solid rgba(131,231,174,.20);
   border-radius:16px;
-  background:rgba(8,19,24,.72);
-  color:#b8ccd1;
+  background:rgba(10,27,23,.70);
+  color:#c8ddd6;
   font-size:13px;
+  line-height:1.7;
 }
+.notice strong{color:#e7fff1}
 .footer{
-  margin-top:34px;
+  margin-top:40px;
   color:#667e86;
   font-size:12px;
   text-align:center;
@@ -197,8 +229,8 @@ h1{
 @media(max-width:720px){
   .wrap{padding-top:24px}
   .hero{padding:30px 24px}
-  .grid{grid-template-columns:1fr}
-  .card{min-height:200px}
+  .grid,.grid.single{grid-template-columns:1fr}
+  .card{min-height:190px}
   .hero:after{font-size:210px;right:-10px}
 }
 </style>
@@ -208,48 +240,72 @@ h1{
   <section class="hero">
     <div class="kicker">ARK: Survival Evolved</div>
     <h1>ARK Guide</h1>
-    <p>サーバーへの接続方法、設定、MOD、初心者向けチュートリアルをまとめたページです。</p>
+    <p>このサーバーで遊ぶために必要な設定と、サーバー情報・初心者向けガイドをまとめています。<br>「自分で設定するもの」と「読むだけの情報」を分けています。</p>
     <div class="status"><span class="dot"></span>The Island / PvE</div>
   </section>
 
-  <div class="section-title">Guides</div>
-
-  <section class="grid">
-    <a class="card" href="connection.html">
-      <div class="arrow">→</div>
-      <div class="icon">↗</div>
-      <small>Connection</small>
-      <h2>サーバー接続手順</h2>
-      <p>Steamへのサーバー登録から、ARK内で実際に接続するところまで。</p>
-    </a>
-
-    <a class="card" href="settings.html">
-      <div class="arrow">→</div>
-      <div class="icon">⚙</div>
-      <small>Server Settings</small>
-      <h2>サーバー設定</h2>
-      <p>現在の倍率・テイム・繁殖・資源・PvEなどの設定を確認できます。</p>
-    </a>
-
-    <a class="card" href="mods.html">
-      <div class="arrow">→</div>
-      <div class="icon">＋</div>
-      <small>MOD</small>
-      <h2>MOD</h2>
-      <p>現在導入しているMODと、今後追加する可能性があるMODを確認できます。</p>
-    </a>
-
-    <a class="card" href="tutorials.html">
-      <div class="arrow">→</div>
-      <div class="icon">◆</div>
-      <small>Tutorial</small>
-      <h2>チュートリアル</h2>
-      <p>拠点づくりやテイム方法など、ARKを始めたばかりの人向けの基本ガイド。</p>
-    </a>
+  <section class="guide-section">
+    <div class="section-head">
+      <h2 class="section-title">まずやること</h2>
+      <p class="section-desc">一緒に遊ぶ人が、自分のPCで設定・確認する項目です。</p>
+    </div>
+    <div class="grid single">
+      <a class="card" href="connection.html">
+        <div class="arrow">→</div>
+        <div class="icon">↗</div>
+        <div class="card-top"><small>Connection</small><span class="badge required">各自設定</span></div>
+        <h2>サーバー接続手順</h2>
+        <p>Steamへのサーバー登録から、ARK内で実際に接続するところまで。</p>
+        <div class="card-note">これは各自でやる必要があります。</div>
+      </a>
+    </div>
   </section>
 
-  <div class="summary">
-    今のサーバーは、戦闘は普通のARK寄り。素材集め・テイム・繁殖の待ち時間だけ短くした。
+  <section class="guide-section">
+    <div class="section-head">
+      <h2 class="section-title">サーバー情報</h2>
+      <p class="section-desc">現在のサーバー内容を確認するための資料です。参加する人が変更する必要はありません。</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="settings.html">
+        <div class="arrow">→</div>
+        <div class="icon">⚙</div>
+        <div class="card-top"><small>Server Settings</small><span class="badge reference">見るだけ</span></div>
+        <h2>サーバー設定</h2>
+        <p>現在の倍率・テイム・繁殖・資源・PvEなど、サーバー側で使用している設定の確認用ページ。</p>
+        <div class="card-note warn">管理者側で設定済み。友だちは変更不要です。</div>
+      </a>
+
+      <a class="card" href="mods.html">
+        <div class="arrow">→</div>
+        <div class="icon">＋</div>
+        <div class="card-top"><small>MOD</small><span class="badge reference">見るだけ</span></div>
+        <h2>導入MOD</h2>
+        <p>現在サーバーに導入しているMODと、今後追加する可能性があるMODのメモ。</p>
+        <div class="card-note warn">サーバー構成の確認用です。</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="guide-section">
+    <div class="section-head">
+      <h2 class="section-title">遊び方ガイド</h2>
+      <p class="section-desc">設定ではなく、ARKを遊ぶときに読む初心者向けチュートリアルです。</p>
+    </div>
+    <div class="grid single">
+      <a class="card" href="tutorials.html">
+        <div class="arrow">→</div>
+        <div class="icon">◆</div>
+        <div class="card-top"><small>Tutorial</small><span class="badge tutorial">チュートリアル</span></div>
+        <h2>初心者チュートリアル</h2>
+        <p>拠点づくりやテイム方法など、ARKを始めたばかりの人向けの基本ガイド。</p>
+        <div class="card-note">分からないときに読む用。設定変更はありません。</div>
+      </a>
+    </div>
+  </section>
+
+  <div class="notice">
+    <strong>サーバー設定について：</strong> 難易度・経験値倍率・採取倍率・テイム倍率などはレンタルサーバー側で管理者が設定しています。参加する人がソロプレイ用の設定を変更しても、このマルチサーバーの設定には影響しません。
   </div>
 
   <div class="footer">ARK Guide</div>
