@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARK ASA 建築方法</title>
+<style>
+:root{--bg:#071015;--panel:#0e1b22;--line:#294750;--text:#eef8fb;--muted:#9db5bc;--accent:#4fe4ea;--accent2:#a4f9fc;--amber:#efc36f}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);background:radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),linear-gradient(180deg,#071015,#09151b 60%,#071015);line-height:1.75}
+.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px)}.top-nav-links{display:flex;gap:8px;flex-wrap:wrap}.top-nav a{display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}.top-nav span{color:#78959d;font-size:12px}
+.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:34px 0 60px}.hero{padding:30px;border:1px solid rgba(79,228,234,.18);border-radius:24px;background:linear-gradient(135deg,rgba(79,228,234,.09),rgba(79,228,234,.025));box-shadow:0 24px 60px rgba(0,0,0,.24)}.kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:.18em}h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margin:0;color:#c6d8dc}
+.notice{margin-top:16px;padding:14px 16px;border-left:4px solid var(--accent);border-radius:10px;background:#0b1a20;color:#dcebed}.section{margin-top:20px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.section h2{margin:0 0 8px;font-size:23px}.section p{margin:0;color:#bfd0d5;font-size:14px}.steps{display:grid;gap:12px;margin-top:15px}.step{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0a171d}.num{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(79,228,234,.28);border-radius:11px;background:#103039;color:#a8fbfd;font-weight:900}.step h3{margin:0 0 4px;font-size:17px}.key{display:inline-grid;min-width:34px;height:30px;place-items:center;padding:0 8px;border:1px solid #416774;border-bottom-width:3px;border-radius:7px;background:#122b33;color:#e9feff;font-family:Consolas,monospace;font-weight:800}.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:13px}.flow .box{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:#071318;color:#d9eaed;font-size:13px}.arrow{color:var(--accent);font-weight:900}.warn{margin-top:14px;padding:12px 14px;border-left:3px solid var(--amber);border-radius:9px;background:#1d180f;color:#e0d0a9;font-size:13px}.figure{margin:16px 0 0;border:1px solid rgba(79,228,234,.18);border-radius:15px;overflow:hidden;background:#071318}.figure img{display:block;width:100%;height:auto}.figure figcaption{padding:10px 12px;color:#89a4aa;font-size:11px;border-top:1px solid rgba(79,228,234,.12)}.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.example{padding:14px;border:1px solid var(--line);border-radius:12px;background:#0a171d}.example b{display:block;color:#eaffff}.example span{color:#8fa9b0;font-size:12px}.footer{margin-top:28px;text-align:center;color:#667f87;font-size:12px}@media(max-width:700px){.step{grid-template-columns:1fr}.examples{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="top-nav"><div class="top-nav-links"><a href="index.html">← TOP</a><a href="tutorials.html">← チュートリアル</a></div><span>ASA 建築方法</span></nav>
+<main class="wrap">
+<section class="hero"><div class="kicker">ARK / ASA / BUILDING</div><h1>ASAの建築パーツ切り替え</h1><p>ASAでは、ドア枠や窓枠を別の建築パーツとして作るのではなく、まず「壁」を使い、設置するときに形を切り替えます。</p><div class="notice"><strong>覚えることは1つ：</strong> 壁の設置プレビューを出したあとに <span class="key">R</span> を押すと、壁・窓枠・ドア枠などのバリエーションを選べます。</div></section>
+<section class="section"><h2>壁 → ドア枠 / 窓枠に変更する</h2><div class="steps">
+<div class="step"><div class="num">01</div><div><h3>「壁」を作る</h3><p>作成画面ではまず通常の壁を用意します。ドア枠や窓枠を作ろうとして別アイテムを探す必要はありません。</p></div></div>
+<div class="step"><div class="num">02</div><div><h3>壁を持って、設置プレビューを出す</h3><p>ホットバーから壁を選び、設置したい場所に壁の半透明プレビューが表示される状態にします。</p></div></div>
+<div class="step"><div class="num">03</div><div><h3><span class="key">R</span> で形を切り替える</h3><p>壁をまだ設置せず、プレビューが出ている状態でRを押します。ここで窓枠やドア枠など、使いたい形へ変更します。</p></div></div>
+<div class="step"><div class="num">04</div><div><h3>選んだ形で設置する</h3><p>ドア枠にしたい場所ならドア枠を選んで設置し、そのあとドアを取り付けます。窓を作りたい場所も同じ要領です。</p></div></div>
+</div>
+<div class="flow"><span class="box">壁を作る</span><span class="arrow">→</span><span class="box">設置プレビュー</span><span class="arrow">→</span><span class="box">R</span><span class="arrow">→</span><span class="box">ドア枠 / 窓枠を選択</span><span class="arrow">→</span><span class="box">設置</span></div>
+<div class="warn"><strong>特に注意：</strong> Rを押すのは、壁を選んだだけの状態ではなく、<strong>壁を立てようとして設置プレビューが出ている状態</strong>です。</div>
+<figure class="figure"><img src="assets/asa-building-r-variant.webp" alt="ASAで壁の設置中にRで建築バリエーションを切り替える画面"><figcaption>参考画像：右側のARK画面。壁の設置中は画面下部にRを含む操作案内が表示されます。</figcaption></figure>
+</section>
+<section class="section"><h2>同じ考え方で建築する</h2><p>ASAでは1つの建築パーツから複数の形へ切り替えられるものがあります。見当たらない形があるときは、まず元になる建築パーツを設置状態にしてRの切り替えを確認します。</p><div class="examples"><div class="example"><b>通常の壁</b><span>そのまま設置</span></div><div class="example"><b>ドア枠</b><span>壁 → Rで切り替え</span></div><div class="example"><b>窓枠</b><span>壁 → Rで切り替え</span></div></div></section>
+<div class="footer">ARK Guide / ASA Building</div>
+</main>
+</body>
+</html>
