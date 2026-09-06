@@ -17,6 +17,7 @@
   --green:#83e7ae;
   --amber:#f0c879;
   --blue:#83bfff;
+  --red:#ff7777;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -111,12 +112,14 @@ h1{
   font-size:18px;
   font-weight:800;
 }
+.section-title.legacy{color:#ff9a9a}
 .section-desc{
   margin:0;
   color:#78949b;
   font-size:12px;
   line-height:1.6;
 }
+.section-desc.legacy{color:#c78181}
 .grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -150,6 +153,15 @@ h1{
   border-radius:50%;
   background:radial-gradient(circle,rgba(79,228,234,.16),transparent 66%);
 }
+.card.legacy{
+  border-color:rgba(255,119,119,.38);
+  background:linear-gradient(145deg,rgba(62,24,27,.86),#10171b);
+}
+.card.legacy:hover{
+  border-color:rgba(255,119,119,.72);
+  box-shadow:0 24px 48px rgba(0,0,0,.26),0 0 0 1px rgba(255,119,119,.08) inset;
+}
+.card.legacy:after{background:radial-gradient(circle,rgba(255,119,119,.14),transparent 66%)}
 .icon{
   width:48px;height:48px;
   display:grid;place-items:center;
@@ -161,6 +173,7 @@ h1{
   font-size:22px;
   font-weight:900;
 }
+.card.legacy .icon{border-color:rgba(255,119,119,.35);background:#381d21;color:#ffc2c2}
 .card-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
 .card small{
   color:#74949c;
@@ -180,6 +193,7 @@ h1{
 .badge.required{color:#dffff0;background:rgba(131,231,174,.10);border:1px solid rgba(131,231,174,.30)}
 .badge.reference{color:#fff0c9;background:rgba(240,200,121,.10);border:1px solid rgba(240,200,121,.28)}
 .badge.tutorial{color:#d9edff;background:rgba(131,191,255,.10);border:1px solid rgba(131,191,255,.28)}
+.badge.legacy{color:#ffd6d6;background:rgba(255,119,119,.12);border:1px solid rgba(255,119,119,.40)}
 .card h2{
   margin:0 0 8px;
   font-size:24px;
@@ -191,6 +205,7 @@ h1{
   font-size:14px;
   line-height:1.7;
 }
+.card.legacy p{color:#d0aaaa}
 .card-note{
   margin-top:13px;
   color:#d6e7ea;
@@ -198,6 +213,7 @@ h1{
   font-weight:700;
 }
 .card-note.warn{color:#f4d99f}
+.card-note.danger{color:#ff9a9a}
 .arrow{
   position:absolute;
   right:22px;
@@ -209,6 +225,7 @@ h1{
   color:var(--accent2);
   font-size:18px;
 }
+.card.legacy .arrow{border-color:rgba(255,119,119,.38);color:#ffb6b6}
 .notice{
   margin-top:22px;
   padding:17px 18px;
@@ -253,9 +270,9 @@ h1{
       <a class="card" href="connection.html">
         <div class="arrow">→</div>
         <div class="icon">↗</div>
-        <div class="card-top"><small>Connection</small><span class="badge required">各自設定</span></div>
+        <div class="card-top"><small>ASA / Connection</small><span class="badge required">各自設定</span></div>
         <h2>サーバー接続手順</h2>
-        <p>Steamへのサーバー登録から、ARK内で実際に接続するところまで。</p>
+        <p>ASAの「非公式」サーバー一覧から、現在のNitradoサーバーを検索して接続する手順。</p>
         <div class="card-note">これは各自でやる必要があります。</div>
       </a>
 
@@ -309,6 +326,23 @@ h1{
         <h2>初心者チュートリアル</h2>
         <p>拠点づくりやテイム方法など、ARKを始めたばかりの人向けの基本ガイド。</p>
         <div class="card-note">分からないときに読む用。設定変更はありません。</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="guide-section">
+    <div class="section-head">
+      <h2 class="section-title legacy">旧ASE用の接続方法</h2>
+      <p class="section-desc legacy">注意：これはARK: Survival Evolved（ASE）用です。現在のASA / Nitradoサーバーでは使用しません。</p>
+    </div>
+    <div class="grid single">
+      <a class="card legacy" href="connection-ase.html">
+        <div class="arrow">→</div>
+        <div class="icon">!</div>
+        <div class="card-top"><small>ASE / Legacy Connection</small><span class="badge legacy">旧ASE専用</span></div>
+        <h2>ASEでのサーバー接続手順</h2>
+        <p>Steamの「ゲームサーバー」からIPアドレスを登録して接続していた、以前のASE用手順をそのまま残しています。</p>
+        <div class="card-note danger">現在のASAではこの方法は使いません。</div>
       </a>
     </div>
   </section>
