@@ -5,96 +5,113 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARK MOD Guide</title>
 <style>
-:root{--bg:#071015;--line:#28444f;--text:#edf9fb;--accent:#4fe4ea;--accent2:#a8fbfd;--green:#7ee2a8;--amber:#f0c879;--red:#ff8f99}
+:root{--bg:#071015;--line:#28444f;--text:#edf9fb;--accent:#4fe4ea;--accent2:#a8fbfd;--green:#7ee2a8;--amber:#f0c879;--red:#ff8f99;--blue:#83bfff}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);
 background:radial-gradient(circle at 80% -10%,rgba(79,228,234,.14),transparent 32%),linear-gradient(180deg,#071015,#09151b 58%,#071015)}
-.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(7,16,21,.94);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px)}
-.top-nav a{padding:8px 12px;border:1px solid rgba(79,228,234,.25);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}
-.top-nav a:hover{background:#163942}.top-nav span{font-size:12px;color:#79949c}
+.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.top-nav a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}
+.top-nav a:hover{background:#163942;border-color:rgba(79,228,234,.5)}.top-nav .page-name{color:#78959d;font-size:12px}
 .wrap{width:min(1080px,calc(100% - 30px));margin:0 auto;padding:34px 0 56px}
 .hero{padding:30px;border:1px solid rgba(79,228,234,.18);border-radius:24px;background:linear-gradient(135deg,rgba(79,228,234,.10),rgba(79,228,234,.025));box-shadow:0 24px 60px rgba(0,0,0,.24)}
 .kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
 h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margin:0;color:#c5d8dc}
 .summary{margin-top:17px;padding:13px 15px;border-left:4px solid var(--accent);border-radius:10px;background:#0b1a20;color:#dbe9ec;font-size:14px}
-.section-title{margin:28px 4px 12px;color:#829fa7;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.game-head{margin-top:30px;padding:20px 22px;border:1px solid rgba(79,228,234,.20);border-radius:18px;background:linear-gradient(145deg,#10262d,#0b191e)}
+.game-head.legacy{margin-top:42px;border-color:rgba(131,191,255,.15);background:linear-gradient(145deg,#101c27,#0b161d)}
+.game-label{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.game-head.legacy .game-label{color:var(--blue)}
+.game-head h2{margin:5px 0 5px;font-size:25px}.game-head p{margin:0;color:#91aab0;font-size:13px;line-height:1.7}
+.section-title{margin:24px 4px 12px;color:#829fa7;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#102129,#0b181e);padding:22px;box-shadow:0 18px 38px rgba(0,0,0,.18)}
-.card.wide{grid-column:1 / -1}
-.card.removed{border-color:rgba(255,143,153,.20);background:linear-gradient(145deg,#21171a,#11171b)}
+.card.wide{grid-column:1 / -1}.card.removed{border-color:rgba(255,143,153,.20);background:linear-gradient(145deg,#21171a,#11171b)}
 .status{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.08em}
 .status.active{color:#dff9e9;background:rgba(126,226,168,.11);border:1px solid rgba(126,226,168,.26)}
 .status.future{color:#fff2cf;background:rgba(240,200,121,.11);border:1px solid rgba(240,200,121,.27)}
 .status.removed{color:#ffd9dc;background:rgba(255,143,153,.10);border:1px solid rgba(255,143,153,.28)}
-.mod-id{margin-top:9px;color:#71909a;font-size:12px;font-family:Consolas,"Cascadia Mono",monospace}
+.status.legacy{color:#d9ecff;background:rgba(131,191,255,.09);border:1px solid rgba(131,191,255,.24)}
+.mod-id{margin-top:9px;color:#71909a;font-size:12px;font-family:Consolas,"Cascadia Mono",monospace}.author{margin-top:4px;color:#66838c;font-size:11px}
 .card h2{margin:13px 0 8px;font-size:24px;line-height:1.25}.card p{margin:0;color:#bbced3;font-size:14px;line-height:1.75}
 .points{margin:15px 0 0;padding-left:19px;color:#d7e7ea;font-size:14px}.points li{margin:6px 0}
 .reason{margin-top:16px;padding:14px 15px;border-radius:13px;border:1px solid rgba(240,200,121,.19);background:#1b1710}
 .reason strong{display:block;margin-bottom:6px;color:#f7d99d;font-size:13px}.reason p{color:#d9cdb7}
 .reason.compat{border-color:rgba(255,143,153,.22);background:#1d1215}.reason.compat strong{color:#ffb3ba}.reason.compat p{color:#d8c1c4}
-.note{margin-top:18px;padding:15px 16px;border:1px solid rgba(79,228,234,.14);border-radius:15px;background:#0a171c;color:#a9c0c6;font-size:13px}
+.note{margin-top:18px;padding:15px 16px;border:1px solid rgba(79,228,234,.14);border-radius:15px;background:#0a171c;color:#a9c0c6;font-size:13px;line-height:1.7}
 .footer{margin-top:34px;color:#657f87;font-size:12px;text-align:center}
-@media(max-width:760px){.grid{grid-template-columns:1fr}.card.wide{grid-column:auto}.hero{padding:23px 19px}}
-
-/* Common top navigation — matches the Server Settings page */
-.top-nav{
-  position:sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 16px;
-  background:rgba(7,16,21,.92);
-  border-bottom:1px solid rgba(79,228,234,.16);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.top-nav a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  border:1px solid rgba(79,228,234,.24);
-  border-radius:10px;
-  background:#102a32;
-  color:#e8fdff;
-  text-decoration:none;
-  font-weight:700;
-  font-size:13px;
-}
-.top-nav a:hover{
-  background:#163942;
-  border-color:rgba(79,228,234,.5);
-}
-.top-nav .page-name{
-  color:#78959d;
-  font-size:12px;
-}
-.top-nav-links{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
+@media(max-width:760px){.grid{grid-template-columns:1fr}.card.wide{grid-column:auto}.hero{padding:23px 19px}.game-head{padding:17px}}
 </style>
 </head>
 <body>
 <nav class="top-nav"><a href="index.html" aria-label="TOPへ戻る">← TOP</a><span class="page-name">MOD</span></nav>
 <main class="wrap">
 <section class="hero">
-<div class="kicker">ARK: Survival Evolved / MOD</div>
+<div class="kicker">ARK / MOD</div>
 <h1>MOD</h1>
-<p>現在導入しているMODと、今後追加する可能性があるMODをまとめています。</p>
-<div class="summary">方針は「便利にはするけど、最初からARK本来の遊び方が分からなくなるほどは変えない」。</div>
+<p>現在のASAサーバーで使用するMODと、以前のASEサーバーで使用していたMODをまとめています。</p>
+<div class="summary">現在遊ぶASAのMODを上部に表示。Upgrade Stationは使用しません。</div>
+</section>
+
+<section class="game-head">
+<div class="game-label">CURRENT SERVER / ASA</div>
+<h2>ARK: Survival Ascended</h2>
+<p>現在のThe Islandサーバーで使用するMOD。ゲーム内のMODリストから導入しているものです。</p>
 </section>
 
 <div class="section-title">Currently Installed</div>
 <section class="grid">
+<article class="card">
+<span class="status active">● 導入中</span>
+<div class="mod-id">CurseForge Project ID: 929169</div>
+<div class="author">Shinygati</div>
+<h2>Configurable Cryopods</h2>
+<p>クライオポッドを使いやすく拡張するMOD。恐竜の収納・持ち運びを便利にし、サーバー設定で細かく挙動を調整できます。</p>
+<ul class="points">
+<li>恐竜をクライオポッドで収納して持ち運べる</li>
+<li>収納した恐竜のインベントリ保持などを設定可能</li>
+<li>拠点の恐竜数を減らして整理しやすくなる</li>
+</ul>
+</article>
+
+<article class="card">
+<span class="status active">● 導入中</span>
+<div class="mod-id">CurseForge Project ID: 935528</div>
+<div class="author">Aesthetic_Construct</div>
+<h2>Visual Storage (Cross Platform)</h2>
+<p>資源ごとの専用ストレージを追加し、入っている量に応じて見た目も変化する収納MOD。ASEで使っていたRP Visual StorageのASA版リメイクです。</p>
+<ul class="points">
+<li>資源ごとに分かれた見た目の分かりやすい収納</li>
+<li>在庫量を外見から確認しやすい</li>
+<li>Wireless Craftingや資源の振り分けなど収納QoLも追加</li>
+</ul>
+</article>
+
 <article class="card wide">
 <span class="status active">● 導入中</span>
+<div class="mod-id">CurseForge Project ID: 929420</div>
+<div class="author">kavan87</div>
+<h2>Super Spyglass Plus</h2>
+<p>望遠鏡で見ている恐竜や建築物などの詳細情報を表示するMOD。恐竜探しやテイム候補の比較をかなり楽にします。</p>
+<ul class="points">
+<li>野生恐竜のステータスやテイム情報を確認しやすい</li>
+<li>ズーム・ターゲットロック・各種表示切り替えに対応</li>
+<li>戦闘力を直接上げるのではなく、情報確認を便利にするタイプ</li>
+</ul>
+</article>
+</section>
+
+<div class="note"><strong>Upgrade Station：</strong>画像ではインストール済みですが、このサーバーでは使用しないためMOD一覧から除外しています。</div>
+
+<section class="game-head legacy">
+<div class="game-label">PREVIOUS SERVER / ASE</div>
+<h2>ARK: Survival Evolved</h2>
+<p>以前のASEサーバーで使っていたMOD・外したMOD・追加候補の記録です。現在のASAサーバー用ではありません。</p>
+</section>
+
+<div class="section-title">Previously Used</div>
+<section class="grid">
+<article class="card wide">
+<span class="status legacy">● ASEで使用</span>
 <div class="mod-id">Workshop ID: 1404697612</div>
 <h2>Awesome SpyGlass!</h2>
 <p>恐竜を見るだけで、レベルやステータス、性別、テイムに必要な情報などを確認しやすくするMOD。ARK標準の望遠鏡より情報量が多く、恐竜探しやテイム候補の比較がかなり楽になります。</p>
@@ -134,24 +151,22 @@ h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margi
 <div class="section-title">Maybe Later</div>
 <section class="grid">
 <article class="card wide">
-<span class="status future">● 追加候補 / 現在は保留</span>
+<span class="status future">● ASEでの追加候補 / 保留</span>
 <div class="mod-id">Workshop ID: 731604991</div>
 <h2>Structures Plus (S+)</h2>
-<p>ARKの建築を大幅に便利にする定番MOD。建築パーツのスナップや設置の自由度、収納・資源移動など、拠点づくりに関する多数のQoL機能が追加されます。大きな拠点を作るようになるほど便利さを感じやすいMODです。</p>
+<p>ARKの建築を大幅に便利にする定番MOD。建築パーツのスナップや設置の自由度、収納・資源移動など、拠点づくりに関する多数のQoL機能が追加されます。</p>
 <ul class="points">
 <li>建築パーツを設置しやすくなる</li>
 <li>建築・収納まわりの面倒な作業を減らせる</li>
 <li>大規模拠点や大量生産を始めると特に便利</li>
-<li>標準建築とは別にS+版の建築物が増える</li>
 </ul>
 <div class="reason">
-<strong>今は入れていない理由</strong>
-<p>最初からS+を導入すると「通常の建築物」と「S+の建築物」の違いが分かりにくくなり、かえって覚えるものが増えるため現時点では保留。まずはARK標準の建築や仕組みに慣れてから、大きな拠点を作ったり建築作業が増えてきた段階で追加を検討する予定です。</p>
+<strong>保留にしていた理由</strong>
+<p>最初からS+を導入すると通常建築との違いが分かりにくくなり、覚えるものが増えるため保留していました。</p>
 </div>
 </article>
 </section>
 
-<div class="note">MODは必要になったものから少しずつ追加する予定。便利さだけを理由に最初から大量導入するのではなく、ARK本来の仕組みをある程度遊んでから追加する方針です。</div>
 <div class="footer">ARK Guide / MOD</div>
 </main>
 </body>
