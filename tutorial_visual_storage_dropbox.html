@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARK ASA Visual Storage Dropbox 使い方</title>
+<style>
+:root{--bg:#071015;--panel:#0e1b22;--line:#294750;--text:#eef8fb;--muted:#9db5bc;--accent:#4fe4ea;--accent2:#a4f9fc;--amber:#efc36f}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);background:radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),linear-gradient(180deg,#071015,#09151b 60%,#071015);line-height:1.75}
+.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px)}.top-nav-links{display:flex;gap:8px;flex-wrap:wrap}.top-nav a{display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}.top-nav a:hover{background:#163942;border-color:rgba(79,228,234,.5)}.top-nav span{color:#78959d;font-size:12px}
+.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:34px 0 60px}.hero{padding:30px;border:1px solid rgba(79,228,234,.18);border-radius:24px;background:linear-gradient(135deg,rgba(79,228,234,.09),rgba(79,228,234,.025));box-shadow:0 24px 60px rgba(0,0,0,.24)}.kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:.18em}h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margin:0;color:#c6d8dc}.notice{margin-top:16px;padding:14px 16px;border-left:4px solid var(--accent);border-radius:10px;background:#0b1a20;color:#dcebed}.notice strong{color:#efffff}.warning{margin-top:16px;padding:13px 15px;border:1px solid rgba(239,195,111,.34);border-radius:11px;background:#1d180f;color:var(--amber);font-weight:800;font-size:13px}
+.section{margin-top:20px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.section h2{margin:0 0 8px;font-size:23px}.section>p{margin:0;color:#bfd0d5;font-size:14px}.steps{display:grid;gap:12px;margin-top:15px}.step{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0a171d}.num{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(79,228,234,.28);border-radius:11px;background:#103039;color:#a8fbfd;font-weight:900}.step h3{margin:0 0 4px;font-size:17px}.step p{margin:0;color:#bfd0d5;font-size:14px}.step p+p{margin-top:8px}.tips{margin:10px 0 0;padding-left:20px;color:#bfd0d5;font-size:14px}.tips li+li{margin-top:7px}.example{margin-top:14px;padding:14px;border-left:3px solid var(--amber);border-radius:9px;background:#1d180f;color:#dfd1ad;font-size:13px}.source{margin-top:14px;font-size:12px;color:#78959d}.source a{color:#9ff8fa}.footer{margin-top:28px;text-align:center;color:#667f87;font-size:12px}@media(max-width:700px){.step{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="top-nav"><div class="top-nav-links"><a href="index.html">← TOP</a><a href="tutorial_visual_storage.html">← Visual Storage</a></div><span>ASA / Visual Storage / Dropbox</span></nav>
+<main class="wrap">
+<section class="hero">
+<div class="kicker">ARK / ASA / VISUAL STORAGE</div>
+<h1>Dropbox の使い方</h1>
+<p>採取から帰ってきたときに、持っている資源をいったんDropboxへ入れ、設定しておいたVisual Storageへまとめて振り分けるための機能です。</p>
+<div class="warning">少し設定が必要です。Wood Binなどの基本収納だけでも十分便利なので、分からなければDropboxは無理に使わなくてもOKです。</div>
+<div class="notice"><strong>最初は少量で試す：</strong> いきなり大量の資源を入れず、木材20個・石10個くらいで「どこへ送られるか」を確認してから本格的に使うのがおすすめです。</div>
+</section>
+
+<section class="section">
+<h2>何が便利？</h2>
+<p>通常は木材をWood Bin、石をStone Bin……とそれぞれ開いて入れます。Dropboxでは、資源ごとに送り先を設定しておけば、採取物をDropboxへまとめて入れてから各収納へ振り分けられます。Visual Storage公式説明でも、Dropboxは資源のクイック投入と、選んだ収納へのDistributionに対応すると案内されています。</p>
+</section>
+
+<section class="section">
+<h2>PCで試す：木材20個と石10個を振り分ける</h2>
+<p>画面名やボタン名はMODのバージョン・言語設定によって多少変わる可能性があります。以下では、画面に表示されるDistribution系の項目を確認しながら進めます。</p>
+<div class="steps">
+<div class="step"><div class="num">01</div><div><h3>Dropboxと送り先の収納を用意する</h3><p>Dropboxを製作して拠点に設置します。近くに、木材用の<strong>Wood Bin</strong>と石用の<strong>Stone Bin</strong>も置いてください。</p><p>最初は送り先をこの2つだけにすると、設定結果が分かりやすくなります。</p></div></div>
+<div class="step"><div class="num">02</div><div><h3>Dropboxを開いて、試す資源を入れる</h3><p>Dropboxに照準を合わせ、PCでは<strong>F</strong>でインベントリを開きます。手持ちから<strong>木材20個・石10個</strong>をDropboxへ移します。</p><p>この時点では「Dropboxへ入っただけ」で、まだWood BinやStone Binへ送られていないことを確認します。</p></div></div>
+<div class="step"><div class="num">03</div><div><h3>Distribution設定画面を開く</h3><p>Dropboxのインベントリ内にあるDistribution関連のメニューを開きます。公式ギャラリーではDropboxのDistribution画面が公開されており、資源と送り先の収納を組み合わせて設定する形になっています。</p><p>左側で<strong>Wood</strong>を選び、送り先として<strong>Wood Bin</strong>を指定します。次に<strong>Stone</strong>を選び、送り先として<strong>Stone Bin</strong>を指定します。</p></div></div>
+<div class="step"><div class="num">04</div><div><h3>送り先を保存する</h3><p>送り先を有効にし、保存ボタンが表示されている場合は設定を保存します。比率（Ratio）が表示される場合、送り先が1つだけならその収納へ全量が行く設定にします。</p><p>送り先が一覧に出ない場合は、再スキャン系の操作があれば実行し、収納が近くにあるか・対象資源に対応しているか・容量が空いているかを確認します。</p></div></div>
+<div class="step"><div class="num">05</div><div><h3>Dropbox内の資源を振り分ける</h3><p>設定画面からDropboxのインベントリへ戻り、Distributionを実行します。すべてまとめて送る操作がある場合はそれを使用します。</p><p>1種類ずつ確認できる場合は、先に木材だけを送ってみると分かりやすいです。木材だけがWood Binへ移り、石がDropboxに残れば、木材の送り先設定は成功しています。</p></div></div>
+<div class="step"><div class="num">06</div><div><h3>Wood BinとStone Binを開いて結果を確認する</h3><p>Wood BinとStone Binをそれぞれ<strong>F</strong>で開きます。送り先が空で、容量不足や他の消費がなければ、Wood Binには木材20個、Stone Binには石10個が入ります。</p><p>Dropboxに資源が残っている場合は、その資源の送り先設定・保存・収納容量を順番に確認してください。</p></div></div>
+</div>
+<div class="example"><strong>試す例：</strong> Dropboxに木材20個と石10個を入れる → 木材だけをDistribution → Wood Binに木材20個が入り、Dropboxには石10個が残る → 残りもDistribution → Stone Binへ石10個が入る。この流れが確認できれば基本設定はOKです。</div>
+</section>
+
+<section class="section">
+<h2>慣れてきたら</h2>
+<ul class="tips">
+<li><strong>複数の送り先：</strong> 同じ資源を複数の収納へ分けたり、いっぱいになったときの予備収納を設定できます。</li>
+<li><strong>Dropbox / Crane間の設定：</strong> 公式説明では範囲内のDropboxとCraneでDistribution設定を自動同期する機能があります。管理者設定で同期が無効になっている場合もあります。</li>
+<li><strong>いかだ・サドル上：</strong> 過去の公式更新履歴では、いかだ・サドル上では同じいかだ・サドル上の構造物だけがDistribution候補になる制限が案内されています。</li>
+</ul>
+</section>
+
+<section class="section">
+<h2>うまくいかないとき</h2>
+<ul class="tips">
+<li>まずDropboxの中に資源が残っているか確認する。</li>
+<li>資源ごとに送り先を登録しているか確認する。</li>
+<li>設定を保存する操作がある場合、保存まで完了しているか確認する。</li>
+<li>送り先のVisual Storageに空き容量があるか確認する。</li>
+<li>送り先が一覧に出ない場合は、距離や設置場所、対象資源の種類を確認する。</li>
+</ul>
+<div class="source">仕様確認：<a href="https://www.curseforge.com/ark-survival-ascended/mods/visual-storage" target="_blank" rel="noopener">Visual Storage / CurseForge</a> ・ <a href="https://www.curseforge.com/ark-survival-ascended/mods/visual-storage/gallery" target="_blank" rel="noopener">公式ギャラリー</a> ・ <a href="https://www.curseforge.com/ark-survival-ascended/mods/visual-storage/files/5197122" target="_blank" rel="noopener">Dropbox同期・設置場所に関する更新履歴</a></div>
+</section>
+
+<div class="footer">ARK Guide / ASA Visual Storage / Dropbox</div>
+</main>
+</body>
+</html>
