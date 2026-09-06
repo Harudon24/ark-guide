@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARK MOD Guide</title>
 <style>
-:root{--bg:#071015;--line:#28444f;--text:#edf9fb;--accent:#4fe4ea;--accent2:#a8fbfd;--green:#7ee2a8;--amber:#f0c879}
+:root{--bg:#071015;--line:#28444f;--text:#edf9fb;--accent:#4fe4ea;--accent2:#a8fbfd;--green:#7ee2a8;--amber:#f0c879;--red:#ff8f99}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);
 background:radial-gradient(circle at 80% -10%,rgba(79,228,234,.14),transparent 32%),linear-gradient(180deg,#071015,#09151b 58%,#071015)}
@@ -21,14 +21,17 @@ h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margi
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#102129,#0b181e);padding:22px;box-shadow:0 18px 38px rgba(0,0,0,.18)}
 .card.wide{grid-column:1 / -1}
+.card.removed{border-color:rgba(255,143,153,.20);background:linear-gradient(145deg,#21171a,#11171b)}
 .status{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.08em}
 .status.active{color:#dff9e9;background:rgba(126,226,168,.11);border:1px solid rgba(126,226,168,.26)}
 .status.future{color:#fff2cf;background:rgba(240,200,121,.11);border:1px solid rgba(240,200,121,.27)}
+.status.removed{color:#ffd9dc;background:rgba(255,143,153,.10);border:1px solid rgba(255,143,153,.28)}
 .mod-id{margin-top:9px;color:#71909a;font-size:12px;font-family:Consolas,"Cascadia Mono",monospace}
 .card h2{margin:13px 0 8px;font-size:24px;line-height:1.25}.card p{margin:0;color:#bbced3;font-size:14px;line-height:1.75}
 .points{margin:15px 0 0;padding-left:19px;color:#d7e7ea;font-size:14px}.points li{margin:6px 0}
 .reason{margin-top:16px;padding:14px 15px;border-radius:13px;border:1px solid rgba(240,200,121,.19);background:#1b1710}
 .reason strong{display:block;margin-bottom:6px;color:#f7d99d;font-size:13px}.reason p{color:#d9cdb7}
+.reason.compat{border-color:rgba(255,143,153,.22);background:#1d1215}.reason.compat strong{color:#ffb3ba}.reason.compat p{color:#d8c1c4}
 .note{margin-top:18px;padding:15px 16px;border:1px solid rgba(79,228,234,.14);border-radius:15px;background:#0a171c;color:#a9c0c6;font-size:13px}
 .footer{margin-top:34px;color:#657f87;font-size:12px;text-align:center}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.card.wide{grid-column:auto}.hero{padding:23px 19px}}
@@ -104,14 +107,29 @@ h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margi
 
 <article class="card">
 <span class="status active">● 導入中</span>
+<div class="mod-id">Workshop ID: 757669231</div>
+<h2>Echo's Stacking Storage v2.2.3</h2>
+<p>木製・金属製の収納箱を追加し、箱同士をきれいにスナップして積み重ねられる収納MOD。収納を整列しやすく、ラベルや染色にも対応しています。</p>
+<ul class="points">
+<li>木製・金属製それぞれにSmall / Medium / Largeの収納箱を追加</li>
+<li>土台や他の箱にスナップして、ずれずに積み重ねられる</li>
+<li>ラベルを付けて中身を整理できる</li>
+<li>INI設定で収納スロット数を変更可能</li>
+</ul>
+</article>
+</section>
+
+<div class="section-title">Removed / Compatibility Issue</div>
+<section class="grid">
+<article class="card wide removed">
+<span class="status removed">● 導入解除 / 互換性問題</span>
 <div class="mod-id">Workshop ID: 1445181373</div>
 <h2>RP Visual Storage</h2>
-<p>木材・石・金属などの資源を、見た目でも分かりやすい専用ストレージに保管できるMOD。拠点内の資源整理がしやすくなり、どこに何を入れたか把握しやすくなります。</p>
-<ul class="points">
-<li>資源ごとに収納を整理しやすい</li>
-<li>見た目で中身を把握しやすい</li>
-<li>拠点の倉庫スペースを分かりやすくまとめられる</li>
-</ul>
+<p>資源の種類に応じた専用ストレージを追加し、中身を見た目でも分かりやすく整理できるMOD。</p>
+<div class="reason compat">
+<strong>外した理由</strong>
+<p>ARK: Survival EvolvedのAquaticaアップデート以降、古いMODとの互換性が崩れており、RP Visual Storageも現在の通常ブランチでは正常動作を保証できない状態になったため導入を解除。エングラム自体は表示されても、一部機能が正常に動作しない可能性があるため使用しない。</p>
+</div>
 </article>
 </section>
 
