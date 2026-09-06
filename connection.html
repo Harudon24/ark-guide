@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ARK サーバー接続手順</title>
 <style>
 :root{--bg:#071015;--panel:#0d1b21;--line:#294850;--text:#eef9fb;--muted:#9fb6bc;--accent:#55e5e9;--accent2:#a9fbfd;--amber:#ffd07a}
@@ -10,34 +10,36 @@
 body{margin:0;min-height:100vh;color:var(--text);font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;background:radial-gradient(circle at 80% -10%,rgba(85,229,233,.11),transparent 32%),linear-gradient(180deg,#071015,#09161c 60%,#071015)}
 .top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px)}
 .top-nav a{padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}.top-nav span{color:#78959d;font-size:12px}
-.wrap{width:min(1040px,calc(100% - 32px));margin:auto;padding:34px 0 60px}
+.wrap{width:min(1060px,calc(100% - 32px));margin:auto;padding:34px 0 60px}
 .hero{padding:32px;border:1px solid rgba(85,229,233,.20);border-radius:24px;background:linear-gradient(135deg,rgba(85,229,233,.10),rgba(85,229,233,.025));box-shadow:0 24px 60px rgba(0,0,0,.22)}
 .kicker{font-size:11px;letter-spacing:.18em;color:var(--accent2);font-weight:900}h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px)}.hero p{margin:0;color:#c5d8dc;line-height:1.7}
-.server-card{margin-top:20px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.box{padding:18px;border:1px solid var(--line);border-radius:16px;background:#0a191f}.label{font-size:10px;letter-spacing:.13em;color:#7899a1;font-weight:800}.value{margin-top:6px;font-size:18px;font-weight:800;color:#ecffff}.address-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:5px}.address{font:800 20px Consolas,monospace;color:#f1ffff;word-break:break-all}.copy{cursor:pointer;padding:8px 12px;border-radius:9px;border:1px solid rgba(85,229,233,.30);background:#123741;color:#efffff;font-weight:800}.small{margin-top:7px;color:#7f9da4;font-size:11px;line-height:1.6}.notice{margin-top:14px;padding:13px 15px;border-left:4px solid var(--amber);border-radius:10px;background:#201b10;color:#d9d2c0;font-size:12px;line-height:1.7}.notice strong{color:#ffe2a2}
+.server-card{margin-top:20px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.box{padding:18px;border:1px solid var(--line);border-radius:16px;background:#0a191f}.label{font-size:10px;letter-spacing:.13em;color:#7899a1;font-weight:800}.value{margin-top:6px;font-size:18px;font-weight:800;color:#ecffff}.address-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:5px}.address{font:800 20px Consolas,monospace;color:#f1ffff;word-break:break-all}.copy{cursor:pointer;padding:8px 12px;border-radius:9px;border:1px solid rgba(85,229,233,.30);background:#123741;color:#efffff;font-weight:800}.small{margin-top:7px;color:#7f9da4;font-size:11px;line-height:1.6}
+.notice{margin-top:14px;padding:13px 15px;border-left:4px solid var(--amber);border-radius:10px;background:#201b10;color:#d9d2c0;font-size:12px;line-height:1.7}.notice strong{color:#ffe2a2}
 .steps{display:grid;gap:14px;margin-top:20px}.step{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:20px;border:1px solid var(--line);border-radius:20px;background:rgba(13,27,33,.94)}.num{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(85,229,233,.35);border-radius:14px;color:#9df8fa;background:#102e36;font-size:17px;font-weight:900}.content h2{margin:0 0 6px;font-size:20px}.content p{margin:0;color:#c9dadd;line-height:1.75;font-size:14px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.tag{padding:5px 8px;border:1px solid rgba(85,229,233,.18);border-radius:999px;background:#0a171c;color:#9db7bd;font-size:10px;font-weight:800}
-.figure{margin-top:14px;padding:8px;border:1px solid #294b55;border-radius:16px;background:#071217}.figure img{display:block;max-width:100%;width:auto;height:auto;margin:auto;border-radius:10px}.caption{margin-top:7px;color:#78949b;font-size:11px;line-height:1.6}.footer{margin-top:28px;text-align:center;color:#5f7d84;font-size:11px}
-@media(max-width:720px){.wrap{width:min(100% - 22px,1040px);padding-top:22px}.hero{padding:24px 20px}.server-card{grid-template-columns:1fr}.step{grid-template-columns:1fr;padding:17px}.address-row{align-items:flex-start;flex-direction:column}.copy{width:100%}}
+.figure{margin-top:14px;padding:8px;border:1px solid #294b55;border-radius:16px;background:#071217}.figure img{display:block;width:100%;height:auto;margin:auto;border-radius:10px}.caption{margin-top:7px;color:#78949b;font-size:11px;line-height:1.6}
+.footer{margin-top:28px;text-align:center;color:#5f7d84;font-size:11px}
+@media(max-width:720px){.wrap{width:min(100% - 22px,1060px);padding-top:22px}.hero{padding:24px 20px}.server-card{grid-template-columns:1fr}.step{grid-template-columns:1fr;padding:17px}.address-row{align-items:flex-start;flex-direction:column}.copy{width:100%}}
 </style>
 </head>
 <body>
 <nav class="top-nav"><a href="index.html">← TOP</a><span>接続手順</span></nav>
 <main class="wrap">
 <section class="hero">
-<div class="kicker">ARK: SURVIVAL ASCENDED / NITRADO</div>
+<div class="kicker">ARK / ASA / NITRADO</div>
 <h1>サーバー接続手順</h1>
-<p>ASAではSteamの「ゲームサーバー」にIPを登録して直接接続する方式は使いません。ゲーム内の非公式サーバー一覧から検索して接続します。</p>
+<p>ASAではSteamの「ゲームサーバー」にIPを登録して接続するのではなく、ゲーム内の非公式サーバー一覧から検索して接続します。</p>
 <div class="server-card">
-<div class="box"><div class="label">SERVER NAME</div><div class="value">Ark #12068 hosted by Harudon</div><div class="small">検索は <strong>Harudon</strong> など名前の一部でOK。</div></div>
+<div class="box"><div class="label">SERVER NAME</div><div class="value">Ark #12068 hosted by Harudon</div><div class="small">検索欄には <strong>Harudon</strong> と入力すれば見つけやすいです。</div></div>
 <div class="box"><div class="label">SERVER ADDRESS</div><div class="address-row"><div class="address" id="serverAddress">45.140.129.27:6490</div><button class="copy" onclick="copyAddress()">コピー</button></div><div class="small">IP: 45.140.129.27 / ゲームポート: 6490</div></div>
 </div>
-<div class="notice"><strong>IPアドレスは確認用。</strong> ASAへの参加はゲーム内の「非公式」サーバー検索から行います。サーバー名を変更した直後は「更新」を押すと新しい名前が反映されます。</div>
+<div class="notice"><strong>IPアドレスは確認用。</strong> ASAへの参加はゲーム内の「非公式」サーバー検索から行います。サーバー一覧に反映されていないときは「更新」を押します。</div>
 </section>
 <section class="steps">
-<article class="step"><div class="num">01</div><div class="content"><h2>「ゲームに参加」を選ぶ</h2><p>ARK: Survival Ascendedを起動し、メインメニューから「ゲームに参加」を開きます。</p><div class="figure"><img src="assets/asa-join-menu.svg" alt="ASAメインメニューのゲームに参加"><div class="caption">メインメニューでは「ゲームに参加」を選択。</div></div></div></article>
-<article class="step"><div class="num">02</div><div class="content"><h2>「非公式」を選んで検索</h2><p>上部で「非公式」を選び、右上の検索欄に <strong>Harudon</strong> と入力します。下部の「パスワードありのサーバーを表示」にチェックを入れて、必要なら「更新」を押します。</p><div class="tags"><span class="tag">非公式</span><span class="tag">Harudon</span><span class="tag">パスワードあり</span></div><div class="figure"><img src="assets/asa-server-search.svg" alt="ASA非公式サーバー検索画面"><div class="caption">「非公式」「Harudon」「パスワードありのサーバーを表示」を確認。</div></div></div></article>
-<article class="step"><div class="num">03</div><div class="content"><h2>サーバーを選んで「開始」</h2><p>一覧から「Ark #12068 hosted by Harudon」を選択し、右下の「開始」を押します。</p></div></article>
-<article class="step"><div class="num">04</div><div class="content"><h2>必要に応じてMODをインストール</h2><p>未導入のMODがある場合は参加前に「必要なMOD」画面が出ます。必要なMODをダウンロード・インストールしてから進みます。すべて「インストール済み」で「ダウンロードするMOD: 0」なら、そのまま開始でOKです。</p><div class="figure"><img src="assets/asa-required-mods.svg" alt="ASA必要MOD確認画面"><div class="caption">現在のサーバーでは Visual Storage / Super Spyglass Plus / Configurable Cryopods の3つを使用。</div></div></div></article>
-<article class="step"><div class="num">05</div><div class="content"><h2>パスワードを入力して接続</h2><p>サーバーパスワードを求められたら入力して接続します。初回はMODの準備などで少し時間がかかる場合があります。</p></div></article>
+<article class="step"><div class="num">01</div><div class="content"><h2>「ゲームに参加」を選ぶ</h2><p>ARKを起動し、メインメニューから「ゲームに参加」を開きます。</p><div class="figure"><img src="assets/asa-join-menu-20260906.webp" alt="ARKのゲームに参加メニュー"><div class="caption">メインメニューでは「ゲームに参加」を選択。</div></div></div></article>
+<article class="step"><div class="num">02</div><div class="content"><h2>「非公式」を選んで検索</h2><p>上部で<strong>「非公式」</strong>を選び、右上の検索欄に <strong>Harudon</strong> と入力します。下部の<strong>「パスワードありのサーバーを表示」</strong>にもチェックを入れます。表示されない場合は「更新」を押します。</p><div class="tags"><span class="tag">非公式</span><span class="tag">Harudon</span><span class="tag">パスワードあり</span></div><div class="figure"><img src="assets/asa-server-search-20260906.webp" alt="ARKの非公式サーバー検索画面"><div class="caption">赤枠の「非公式」「Harudon」「パスワードありのサーバーを表示」を確認。</div></div></div></article>
+<article class="step"><div class="num">03</div><div class="content"><h2>サーバーを選んで「開始」</h2><p>一覧に表示された <strong>Ark #12068 hosted by Harudon</strong> を選択し、右下の「開始」を押します。</p></div></article>
+<article class="step"><div class="num">04</div><div class="content"><h2>必要に応じてMODをインストール</h2><p>未導入のMODがある場合は、参加前に「必要なMOD」画面が表示されます。表示されたMODをダウンロード・インストールしてから進みます。すべて「インストール済み」で<strong>「ダウンロードするMOD: 0」</strong>なら、そのまま「開始」でOKです。</p><div class="figure"><img src="assets/asa-required-mods-20260906.webp" alt="ARKの必要なMOD画面"><div class="caption">現在のサーバーでは Visual Storage / Super Spyglass Plus / Configurable Cryopods の3つを使用。</div></div></div></article>
+<article class="step"><div class="num">05</div><div class="content"><h2>パスワードを入力して接続</h2><p>サーバーパスワードを求められたら入力して接続します。初回はMODのダウンロードや準備で少し時間がかかる場合があります。</p></div></article>
 </section>
 <div class="footer">ARK Guide / Connection</div>
 </main>
