@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARK ASA Visual Storage Crane 使い方</title>
+<style>
+:root{--bg:#071015;--panel:#0e1b22;--line:#294750;--text:#eef8fb;--muted:#9db5bc;--accent:#4fe4ea;--accent2:#a4f9fc;--amber:#efc36f}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);background:radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),linear-gradient(180deg,#071015,#09151b 60%,#071015);line-height:1.75}
+.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px)}.top-nav-links{display:flex;gap:8px;flex-wrap:wrap}.top-nav a{display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}.top-nav a:hover{background:#163942;border-color:rgba(79,228,234,.5)}.top-nav span{color:#78959d;font-size:12px}
+.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:34px 0 60px}.hero{padding:30px;border:1px solid rgba(79,228,234,.18);border-radius:24px;background:linear-gradient(135deg,rgba(79,228,234,.09),rgba(79,228,234,.025));box-shadow:0 24px 60px rgba(0,0,0,.24)}.kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:.18em}h1{margin:7px 0 8px;font-size:clamp(30px,5vw,48px);line-height:1.1}.hero p{margin:0;color:#c6d8dc}.notice{margin-top:16px;padding:14px 16px;border-left:4px solid var(--accent);border-radius:10px;background:#0b1a20;color:#dcebed}.notice strong{color:#efffff}.warning{margin-top:16px;padding:13px 15px;border:1px solid rgba(239,195,111,.34);border-radius:11px;background:#1d180f;color:var(--amber);font-weight:800;font-size:13px}
+.section{margin-top:20px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.section h2{margin:0 0 8px;font-size:23px}.section>p{margin:0;color:#bfd0d5;font-size:14px}.steps{display:grid;gap:12px;margin-top:15px}.step{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0a171d}.num{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(79,228,234,.28);border-radius:11px;background:#103039;color:#a8fbfd;font-weight:900}.step h3{margin:0 0 4px;font-size:17px}.step p{margin:0;color:#bfd0d5;font-size:14px}.step p+p{margin-top:8px}.tips{margin:10px 0 0;padding-left:20px;color:#bfd0d5;font-size:14px}.tips li+li{margin-top:7px}.example{margin-top:14px;padding:14px;border-left:3px solid var(--amber);border-radius:9px;background:#1d180f;color:#dfd1ad;font-size:13px}.source{margin-top:14px;font-size:12px;color:#78959d}.source a{color:#9ff8fa}.footer{margin-top:28px;text-align:center;color:#667f87;font-size:12px}@media(max-width:700px){.step{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="top-nav"><div class="top-nav-links"><a href="index.html">← TOP</a><a href="tutorial_visual_storage.html">← Visual Storage</a></div><span>ASA / Visual Storage / Crane</span></nav>
+<main class="wrap">
+<section class="hero">
+<div class="kicker">ARK / ASA / VISUAL STORAGE</div>
+<h1>Crane の使い方</h1>
+<p>採取に使った恐竜などから資源をまとめて降ろし、そのままVisual Storageへ振り分けるための機能です。Dropboxよりさらに自動化できます。</p>
+<div class="warning">荷下ろし範囲やDistributionの設定が必要です。基本収納だけでも困らないので、分からなければCraneは無理に使わなくてもOKです。</div>
+<div class="notice"><strong>最初は恐竜1体・資源1種類で試す：</strong> 石20個だけを持たせた恐竜1体で「Craneへ降ろす → Stone Binへ送る」の流れを確認すると分かりやすいです。</div>
+</section>
+
+<section class="section">
+<h2>何が便利？</h2>
+<p>Visual Storage公式説明では、Craneは恐竜・恐竜サドル・いかだ・カートなどから資源を荷下ろしでき、荷下ろし範囲を調整でき、複数の恐竜にも対応します。さらにDropboxと同じように、取り込んだ資源を選んだ収納へDistributionできます。</p>
+</section>
+
+<section class="section">
+<h2>PCで試す：恐竜の石20個をStone Binへ送る</h2>
+<p>画面名やボタン名はMODのバージョン・言語設定によって多少変わる可能性があります。まずは1体で成功させてから対象を増やしてください。</p>
+<div class="steps">
+<div class="step"><div class="num">01</div><div><h3>CraneとStone Binを用意する</h3><p>Craneを製作して、恐竜が近づける場所へ設置します。近くに空き容量のある<strong>Stone Bin</strong>も用意します。</p><p>最初のテストでは、関係ない恐竜はCraneから少し離しておくと、どの恐竜が対象になったか確認しやすくなります。</p></div></div>
+<div class="step"><div class="num">02</div><div><h3>荷下ろし範囲を確認する</h3><p>Craneに照準を合わせ、<strong>E長押し</strong>のオプションメニューから設定画面を開きます。公式ギャラリーではCraneの荷下ろし範囲を表示して調整する画面が公開されています。</p><p>Unload Area / Show Areaのような項目が表示されたら範囲を可視化し、恐竜が入る大きさに調整します。サイズを変更した場合は保存操作まで行います。</p></div></div>
+<div class="step"><div class="num">03</div><div><h3>恐竜に石20個を持たせて範囲内へ移動する</h3><p>テスト用の恐竜のインベントリに<strong>石20個</strong>を入れ、Craneの荷下ろし範囲内へ移動させます。</p><p>公式仕様では、恐竜側の<strong>vs</strong>という名前のフォルダー内に入れたアイテムはCraneの荷下ろし対象から除外されます。残しておきたい物がある場合に使えます。</p></div></div>
+<div class="step"><div class="num">04</div><div><h3>Craneから荷下ろしを実行する</h3><p>Craneを開き、恐竜をUnloadする操作を実行します。成功すると、対象資源が恐竜から減り、Crane側へ移ります。</p><p>この時点ではまだStone Binまで送られていない場合があります。まず「恐竜 → Crane」が成功したかを確認します。</p></div></div>
+<div class="step"><div class="num">05</div><div><h3>Stoneの送り先をStone Binに設定する</h3><p>CraneのDistribution設定を開き、<strong>Stone → Stone Bin</strong>になるよう送り先を登録します。保存操作がある場合は設定を保存します。</p><p>Dropboxで同じDistribution設定を済ませている場合、公式説明では範囲内のDropboxとCrane間で設定が同期されることがあります。実際の送り先がStone Binになっているかだけは確認してください。</p></div></div>
+<div class="step"><div class="num">06</div><div><h3>Distributionを実行して3か所を確認する</h3><p>Crane内の石をDistributionし、Stone Binを<strong>F</strong>で開きます。他の出し入れや容量不足がなければ、石20個がStone Binへ移ります。</p><p><strong>恐竜 → Crane → Stone Bin</strong>の順に確認すると、失敗した場所を切り分けやすくなります。</p></div></div>
+</div>
+<div class="example"><strong>試す例：</strong> 恐竜の通常欄に石20個、<strong>vs</strong>フォルダーに木材5個を入れる → Craneの範囲内でUnload → 石20個はCraneへ移り、木材5個は恐竜に残ることを確認 → 石をDistributionしてStone Binへ送る。これで「回収する物」と「残す物」の両方を確認できます。</div>
+</section>
+
+<section class="section">
+<h2>慣れてきたら</h2>
+<ul class="tips">
+<li><strong>複数の恐竜：</strong> Craneは複数の恐竜を同時に荷下ろしできます。1体で成功してから範囲内の対象を増やすのがおすすめです。</li>
+<li><strong>範囲調整：</strong> 荷下ろし範囲を広げすぎると、意図していない恐竜まで対象になりやすくなります。見える範囲で必要な大きさにします。</li>
+<li><strong>Dropboxと同じDistribution：</strong> Craneは荷下ろしたあと、Dropboxと同様に選んだVisual Storageへ資源を振り分けられます。</li>
+<li><strong>Remote Lever：</strong> 公式説明ではDino unload crane and remote leverも用意されています。まずCrane本体で動作を確認してから使うと分かりやすいです。</li>
+</ul>
+</section>
+
+<section class="section">
+<h2>うまくいかないとき</h2>
+<ul class="tips">
+<li>恐竜が荷下ろし範囲の中にいるか確認する。</li>
+<li>恐竜の資源が<strong>vs</strong>フォルダーに入っていないか確認する。</li>
+<li>Crane側に資源が移っているなら、次はDistribution設定と送り先容量を確認する。</li>
+<li>Crane側にも移っていないなら、荷下ろし範囲・対象資源・恐竜の位置を確認する。</li>
+<li>一度に大量の恐竜・大量の資源で試さず、1体・少量から確認する。</li>
+</ul>
+<div class="source">仕様確認：<a href="https://www.curseforge.com/ark-survival-ascended/mods/visual-storage" target="_blank" rel="noopener">Visual Storage / CurseForge</a> ・ <a href="https://www.curseforge.com/ark-survival-ascended/mods/visual-storage/gallery" target="_blank" rel="noopener">公式ギャラリー（Crane / unload area）</a></div>
+</section>
+
+<div class="footer">ARK Guide / ASA Visual Storage / Crane</div>
+</main>
+</body>
+</html>
