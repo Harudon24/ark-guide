@@ -13,89 +13,14 @@ a{color:var(--accent2)}.top-nav{position:sticky;top:0;z-index:20;display:flex;al
 </head>
 <body>
 <nav class="top-nav"><a href="index.html">← ARK Guide</a><div class="meta">ARK: Survival Ascended / Client Performance</div></nav>
-<main class="wrap">
-<section class="hero">
-  <div class="kicker">ASA / Performance</div>
-  <h1>ゲームを軽くする</h1>
-  <p>ASAのコンソールを有効にして、負荷の高い描画を減らす手順です。まずは雲と霧だけをOFFにして、見た目を残しながらFPSがどれくらい変わるか確認します。</p>
-  <div class="chips">
-    <span class="chip good">管理者権限不要</span>
-    <span class="chip">自分のPCだけに反映</span>
-    <span class="chip">サーバー設定には影響しない</span>
-    <span class="chip warnchip">ログインするたびに再実行</span>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-head">
-    <div class="step">STEP 1</div>
-    <h2>コンソールを使えるようにする</h2>
-    <p class="desc">最初に1回だけ設定します。</p>
-  </div>
-  <div class="flow">
-    <div class="flow-item"><div class="flow-num">01</div><div class="flow-main"><kbd>ESC</kbd> → 設定</div><div class="flow-sub">ゲーム内の設定画面を開く</div></div>
-    <div class="flow-item"><div class="flow-num">02</div><div class="flow-main">「詳細」を開く</div><div class="flow-sub">「コンソールアクセス」をON</div></div>
-    <div class="flow-item"><div class="flow-num">03</div><div class="flow-main">キーボードを確認</div><div class="flow-sub">「コンソールの切り替え」のキーを確認</div></div>
-    <div class="flow-item"><div class="flow-num">04</div><div class="flow-main"><kbd>~</kbd> で開く</div><div class="flow-sub">割り当てを変えている場合は設定したキーを使用</div></div>
-  </div>
-  <div class="image-grid">
-    <figure class="screenshot"><img src="assets/asa-console-access.webp" alt="ASAの設定でコンソールアクセスをオンにした画面"><figcaption class="caption">設定 → 詳細 → 「コンソールアクセス」をオン。</figcaption></figure>
-    <figure class="screenshot"><img src="assets/asa-graphics-settings.webp" alt="ASAのグラフィック設定画面"><figcaption class="caption">通常のグラフィック設定もここで調整できます。コンソールコマンドとは別の設定です。</figcaption></figure>
-  </div>
-  <div class="callout"><strong>ここで使うのはクライアント側の描画設定です。</strong> NitradoのAdmin Passwordや <code>enablecheats</code> は不要です。</div>
-</section>
-
-<section class="section">
-  <div class="section-head">
-    <div class="step">STEP 2</div>
-    <h2>コンソールを開いて入力する</h2>
-    <p class="desc">画面下の入力欄にコマンドを入力して実行します。上側には入力したコマンドの履歴が表示されます。</p>
-  </div>
-  <figure class="screenshot console"><img src="assets/asa-console-ui.webp" alt="ASAのコンソールコマンドUI"><figcaption class="caption">コンソールUIの例。上側が履歴、下側が入力欄です。</figcaption></figure>
-
-  <div class="warn"><strong>重要：軽量化コマンドはサーバーにログインするたびに再実行が必要です。</strong> 前回入力したコマンドは履歴に残っていても、描画設定自体は毎回もう一度適用します。</div>
-
-  <div class="flow">
-    <div class="flow-item"><div class="flow-num">01</div><div class="flow-main">履歴から1つ選ぶ</div><div class="flow-sub">実行したいコマンドを上側の履歴から選択</div></div>
-    <div class="flow-item"><div class="flow-num">02</div><div class="flow-main">入力欄をクリック</div><div class="flow-sub">下の入力欄をクリックして、文字を入力できる状態にする</div></div>
-    <div class="flow-item"><div class="flow-num">03</div><div class="flow-main"><kbd>Enter</kbd> で実行</div><div class="flow-sub">履歴を選んだだけでは実行されないので注意</div></div>
-    <div class="flow-item"><div class="flow-num">04</div><div class="flow-main">1つずつ繰り返す</div><div class="flow-sub">使うコマンドごとに同じ操作を行う</div></div>
-  </div>
-
-  <div class="callout"><strong>特に忘れやすいところ：</strong> 履歴を選択したあと、そのままEnterではなく、<strong>いったん下の入力欄をクリックして入力状態にしてからEnter</strong>を押します。複数のコマンドを使う場合はこれを1つずつ繰り返します。</div>
-</section>
-
-<section class="section">
-  <div class="section-head"><div class="step">STEP 3</div><h2>まずは雲・霧をOFF</h2><p class="desc">見た目を大きく壊しにくいものから順番に試します。</p></div>
-  <div class="preset-grid">
-    <div class="preset reco"><div class="preset-label reco">RECOMMENDED</div><h3>雲 + 霧をOFF</h3><p>まずはこれ。ASAで負荷の高いボリューメトリック描画を切ります。</p><div class="command-wrap"><code class="command">r.VolumetricCloud 0 | r.VolumetricFog 0</code><button class="copy" data-copy="r.VolumetricCloud 0 | r.VolumetricFog 0">コピー</button></div></div>
-    <div class="preset"><div class="preset-label">MORE FPS</div><h3>水面反射もOFF</h3><p>まだ重い場合に追加。草は残すので、景観を大きく変えずにもう少し軽量化できます。</p><div class="command-wrap"><code class="command">r.VolumetricCloud 0 | r.VolumetricFog 0 | r.Water.SingleLayer.Reflection 0</code><button class="copy" data-copy="r.VolumetricCloud 0 | r.VolumetricFog 0 | r.Water.SingleLayer.Reflection 0">コピー</button></div></div>
-  </div>
-  <div class="preset last"><div class="preset-label last">LAST RESORT</div><h3>草をOFF — 最終手段</h3><p><strong>かなり殺風景になります。</strong> それでも重い場合だけ使用する想定です。</p><div class="command-wrap"><code class="command">grass.Enable 0</code><button class="copy" data-copy="grass.Enable 0">コピー</button></div></div>
-</section>
-
-<section class="section">
-  <div class="section-head"><div class="step">COMMANDS</div><h2>コマンドごとの効果</h2><p class="desc">一気に全部切らず、1つずつ試して見た目とFPSのバランスを調整できます。</p></div>
-  <div class="command-list">
-    <div class="cmd-card"><div><div class="cmd-title">雲をOFF</div><div class="cmd-desc">ボリューメトリッククラウドを無効化。軽量化コマンドの中でも効果が大きい定番。</div><div class="cmdline command-wrap"><code class="command">r.VolumetricCloud 0</code><button class="copy" data-copy="r.VolumetricCloud 0">コピー</button></div><div class="restore">戻す: <code>r.VolumetricCloud 1</code></div></div><div class="impact"><span class="high">効果 大</span></div></div>
-    <div class="cmd-card"><div><div class="cmd-title">霧をOFF</div><div class="cmd-desc">ボリューメトリックフォグを無効化。遠景の雰囲気は変わりますが負荷軽減に有効です。</div><div class="cmdline command-wrap"><code class="command">r.VolumetricFog 0</code><button class="copy" data-copy="r.VolumetricFog 0">コピー</button></div><div class="restore">戻す: <code>r.VolumetricFog 1</code></div></div><div class="impact"><span class="high">効果 大</span></div></div>
-    <div class="cmd-card"><div><div class="cmd-title">水面反射をOFF</div><div class="cmd-desc">水面の反射表現を減らして軽量化します。</div><div class="cmdline command-wrap"><code class="command">r.Water.SingleLayer.Reflection 0</code><button class="copy" data-copy="r.Water.SingleLayer.Reflection 0">コピー</button></div><div class="restore">戻す: <code>r.Water.SingleLayer.Reflection 1</code></div></div><div class="impact"><span class="mid">効果 中</span></div></div>
-    <div class="cmd-card last"><div><div class="cmd-title">草をOFF</div><div class="cmd-desc">草などの植生を消します。かなり軽くなる可能性がありますが、景観が大きく変わって殺風景になるため最終手段。</div><div class="cmdline command-wrap"><code class="command">grass.Enable 0</code><button class="copy" data-copy="grass.Enable 0">コピー</button></div><div class="restore">戻す: <code>grass.Enable 1</code></div></div><div class="impact"><span class="last">最終手段</span></div></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-head"><div class="step">CHECK</div><h2>FPSを確認する</h2></div>
-  <div class="measure">
-    <div class="mini-card"><h3>FPS表示</h3><p>設定変更前後を同じ場所で比べると分かりやすいです。</p><div class="command-wrap"><code class="command">stat fps</code><button class="copy" data-copy="stat fps">コピー</button></div></div>
-    <div class="mini-card"><h3>おすすめの順番</h3><p>① 雲・霧 → ② 水面反射 → ③ それでも重ければ草。必要以上に画質を落とさないようにします。</p></div>
-  </div>
-  <div class="warn"><strong>毎回のログイン後に忘れず再実行。</strong> 履歴からコマンドを1つ選ぶ → 下の入力欄をクリックして入力状態にする → Enter、を必要なコマンド分だけ繰り返します。</div>
-</section>
-
-<div class="footer">ARK Guide / ASA Performance</div>
-</main>
-<script>
+<main class="wrap"><section class="hero"><div class="kicker">ASA / Performance &amp; Visibility</div><h1>軽くする・見やすくする</h1><p>雲や霧を減らす軽量化から、形状の細かさ・影の調整、暗い場所の明るさ調整まで。1つずつ試して、見た目とFPSのバランスを選びます。</p><div class="chips"><span class="chip good">自分の画面の描画設定</span><span class="chip">管理者コマンド不要</span><span class="chip warnchip">草OFFは最終手段</span></div><div class="chips"><a class="chip" href="#console">入力方法</a><a class="chip" href="#start">雲・霧</a><a class="chip" href="#more">追加の軽量化</a><a class="chip" href="#gamma">明るさ</a><a class="chip" href="#check">確認・戻し方</a></div></section><section class="section" id="console"><div class="section-head"><div class="step">START HERE</div><h2>コンソールを開いて実行する</h2><p class="desc">最初にコンソールアクセスを有効にします。</p></div>
+<div class="flow"><div class="flow-item"><div class="flow-num">01</div><div class="flow-main">ESC → 設定 → 詳細</div><div class="flow-sub">「コンソールアクセス」をON</div></div><div class="flow-item"><div class="flow-num">02</div><div class="flow-main">割り当てキーで開く</div><div class="flow-sub">キーボード設定の「コンソールの切り替え」を確認</div></div><div class="flow-item"><div class="flow-num">03</div><div class="flow-main">コマンドを入力</div><div class="flow-sub">このページでコピーして、下の入力欄に貼り付ける</div></div><div class="flow-item"><div class="flow-num">04</div><div class="flow-main">Enterで実行</div><div class="flow-sub">見た目とFPSの変化を確認する</div></div></div>
+<div class="image-grid"><figure class="screenshot"><img loading="lazy" src="assets/asa-console-access.webp" alt="詳細設定でコンソールアクセスをオンにする"><figcaption class="caption">設定 → 詳細 → コンソールアクセス。</figcaption></figure><figure class="screenshot"><img loading="lazy" src="assets/asa-graphics-settings.webp" alt="ASAのグラフィック設定"><figcaption class="caption">通常のグラフィック設定からも画質を調整できます。</figcaption></figure></div>
+<figure class="screenshot console"><img loading="lazy" src="assets/asa-console-ui.webp" alt="gamma、影、Nanite、霧、雲のコマンドが並ぶコンソール履歴"><figcaption class="caption">上側は過去に入力した履歴、下側は入力欄。同じ設定の値違いが並んでいても、両方を実行する必要はありません。</figcaption></figure>
+<div class="callout"><strong>履歴から使う場合：</strong> コマンドを選ぶ → 下の入力欄をクリック → Enter。履歴に残っていることと、設定が今も適用されていることは別です。</div></section><section class="section" id="start"><div class="section-head"><div class="step">01 / FIRST TRY</div><h2>まずは雲・霧をOFF</h2><p class="desc">同じ場所で1つずつ試し、FPSと景色を見比べます。</p></div><div class="command-list"><div class="cmd-card"><div><div class="cmd-title">雲をOFF</div><div class="cmd-desc">立体的な雲の描画を無効にします。空の雰囲気は変わりますが、最初に試す軽量化候補です。</div><div class="cmdline"><div class="command-wrap"><code class="command">r.VolumetricCloud 0</code><button class="copy" data-copy="r.VolumetricCloud 0" aria-label="r.VolumetricCloud 0 をコピー">コピー</button></div></div><div class="restore">再び有効にする：<code>r.VolumetricCloud 1</code></div></div><div class="impact"><span class="mid">最初に試す</span></div></div><div class="cmd-card"><div><div class="cmd-title">立体的な霧をOFF</div><div class="cmd-desc">光の散乱などを表現するボリューメトリックフォグを無効にします。霧や光の雰囲気が変わります。</div><div class="cmdline"><div class="command-wrap"><code class="command">r.VolumetricFog 0</code><button class="copy" data-copy="r.VolumetricFog 0" aria-label="r.VolumetricFog 0 をコピー">コピー</button></div></div><div class="restore">再び有効にする：<code>r.VolumetricFog 1</code></div></div><div class="impact"><span class="mid">最初に試す</span></div></div></div></section><section class="section" id="more"><div class="section-head"><div class="step">02 / MORE OPTIONS</div><h2>まだ重いときの追加調整</h2><p class="desc">全部を入れる必要はありません。好みの景色を保てるものだけ使います。</p></div><div class="command-list"><div class="cmd-card"><div><div class="cmd-title">水面反射をOFF</div><div class="cmd-desc">水面の反射表現を無効にします。水辺で見た目とFPSを比較してください。</div><div class="cmdline"><div class="command-wrap"><code class="command">r.Water.SingleLayer.Reflection 0</code><button class="copy" data-copy="r.Water.SingleLayer.Reflection 0" aria-label="r.Water.SingleLayer.Reflection 0 をコピー">コピー</button></div></div><div class="restore">再び有効にする：<code>r.Water.SingleLayer.Reflection 1</code></div></div><div class="impact"><span class="mid">追加調整</span></div></div><div class="cmd-card"><div><div class="cmd-title">Naniteの形状を少し粗くする</div><div class="cmd-desc">Naniteで描かれる物体の形状の細かさを調整します。テクスチャ解像度の設定ではありません。数値が大きいほど詳細度が下がる方向で、負荷を減らせる可能性があります。まず2、さらに試すなら3。元の値によっては2にしても軽量化にならないため、変更前の値を確認してください。</div><div class="cmdline"><div class="command-wrap"><code class="command">r.Nanite.MaxPixelsPerEdge 2</code><button class="copy" data-copy="r.Nanite.MaxPixelsPerEdge 2" aria-label="r.Nanite.MaxPixelsPerEdge 2 をコピー">コピー</button></div></div><div class="cmdline"><div class="command-wrap"><code class="command">r.Nanite.MaxPixelsPerEdge 3</code><button class="copy" data-copy="r.Nanite.MaxPixelsPerEdge 3" aria-label="r.Nanite.MaxPixelsPerEdge 3 をコピー">コピー</button></div></div><div class="restore">2と3はどちらか一方を使用。戻すときは変更前の値に設定します。UEの標準値とASAでの設定値は同じとは限りません。</div></div><div class="impact"><span class="mid">追加調整</span></div></div><div class="cmd-card"><div><div class="cmd-title">霧の描画をOFF</div><div class="cmd-desc">r.Fogは霧の描画を制御する設定です。上のVolumetricFogとは別のスイッチで、遠景のかすみなどの見え方が変わります。霧をさらに減らしたいときの候補です。両方をOFFにしても効果が倍になるわけではありません。</div><div class="cmdline"><div class="command-wrap"><code class="command">r.Fog 0</code><button class="copy" data-copy="r.Fog 0" aria-label="r.Fog 0 をコピー">コピー</button></div></div><div class="restore">再び有効にする：<code>r.Fog 1</code></div></div><div class="impact"><span class="mid">視界も変化</span></div></div><div class="cmd-card"><div><div class="cmd-title">影をOFF</div><div class="cmd-desc">影の描画を無効にします。描画負荷を減らせる可能性がありますが、物体の立体感や地面との接地感が薄くなります。</div><div class="cmdline"><div class="command-wrap"><code class="command">r.ShadowQuality 0</code><button class="copy" data-copy="r.ShadowQuality 0" aria-label="r.ShadowQuality 0 をコピー">コピー</button></div></div><div class="restore">戻すときは変更前の値に設定するか、ゲーム内の影の画質設定を調整します。<code>1</code>は低品質であり、元の画質への復元とは限りません。</div></div><div class="impact"><span class="mid">見た目の変化 大</span></div></div><div class="cmd-card last"><div><div class="cmd-title">草をOFF — 最終手段</div><div class="cmd-desc">草などの植生表示を無効にします。かなり殺風景になるため、ほかの調整でも重い場合だけ試してください。</div><div class="cmdline"><div class="command-wrap"><code class="command">grass.Enable 0</code><button class="copy" data-copy="grass.Enable 0" aria-label="grass.Enable 0 をコピー">コピー</button></div></div><div class="restore">再び有効にする：<code>grass.Enable 1</code></div></div><div class="impact"><span class="last">最終手段</span></div></div></div></section><section class="section" id="gamma"><div class="section-head"><div class="step">03 / BRIGHTNESS</div><h2>暗いときは明るさを調整</h2><p class="desc">gammaは見やすさのための設定です。FPSを上げる目的では使いません。</p></div><div class="preset-grid"><div class="preset"><div class="preset-label">BRIGHTER</div><h3>明るさを3にする</h3><p>暗い場所を見やすくする候補。明るい場所では白っぽく感じることがあります。</p><div class="command-wrap"><code class="command">gamma 3</code><button class="copy" data-copy="gamma 3" aria-label="gamma 3 をコピー">コピー</button></div></div><div class="preset"><div class="preset-label">LESS BRIGHT</div><h3>明るさを2にする</h3><p>3より暗い表示にします。「初期値に戻す」コマンドではありません。</p><div class="command-wrap"><code class="command">gamma 2</code><button class="copy" data-copy="gamma 2" aria-label="gamma 2 をコピー">コピー</button></div></div></div><div class="callout"><strong>2と3は切り替えて使います。</strong> 続けて実行すると最後の値が適用されます。元の明るさに戻したいときは、変更前のガンマ値を使ってください。</div></section><section class="section" id="check"><div class="section-head"><div class="step">04 / CHECK &amp; RESTORE</div><h2>FPSを確認して、必要な設定だけ残す</h2><p class="desc">効果はPC構成・場所・ゲームのバージョンによって変わります。</p></div><div class="measure"><div class="mini-card"><h3>FPSを表示する</h3><p>同じ場所・同じ視点で変更前後を比較します。もう一度実行すると表示を切り替えられます。</p><div class="command-wrap"><code class="command">stat fps</code><button class="copy" data-copy="stat fps" aria-label="stat fps をコピー">コピー</button></div></div><div class="mini-card"><h3>変更前の値を控える</h3><p>描画設定は値を付けずに入力すると、通常は現在値を確認できます。特にNaniteと影は元の値を控えてから変更します。</p><div class="command-wrap"><code class="command">r.Nanite.MaxPixelsPerEdge</code><button class="copy" data-copy="r.Nanite.MaxPixelsPerEdge" aria-label="r.Nanite.MaxPixelsPerEdge をコピー">コピー</button></div><div class="cmdline"><div class="command-wrap"><code class="command">r.ShadowQuality</code><button class="copy" data-copy="r.ShadowQuality" aria-label="r.ShadowQuality をコピー">コピー</button></div></div></div></div>
+<div class="callout"><strong>試す順番：</strong> 雲・立体的な霧 → 水面反射やNanite → 必要なら霧・影 → それでも重ければ草。暗さが気になる場合はgammaを別に調整します。</div>
+<div class="warn"><strong>再起動・再接続後は適用状態を確認。</strong> コマンドの設定は永続保存されるとは限らず、画質設定の変更で上書きされる場合もあります。履歴が残っていても、必要な設定が戻っていたら再実行してください。コマンドが効かない場合はゲームのバージョンや通常の画質設定も確認します。</div>
+<p class="desc" style="margin-top:16px">描画設定の定義：<a href="https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-console-variables-reference">Unreal Engine公式リファレンス</a> ／ <a href="https://www.docswell.com/s/EpicGamesJapan/K3G48Y-UnrealInsightsProfileGPULumenNanite">Epic Games JapanのNanite解説</a>。エンジン上の定義であり、ASAでの効果や初期値を保証するものではありません。</p></section><div class="footer">ARK Guide / ASA Performance</div></main><script>
 document.querySelectorAll('.copy').forEach(btn=>{
   btn.addEventListener('click',async()=>{
     const text=btn.dataset.copy;
