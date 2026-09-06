@@ -79,16 +79,16 @@
 </main>
 <script>
 document.querySelectorAll('.figure.pending img').forEach(img=>{
+  const figure=img.closest('.figure');
   const reveal=()=>{
-    if(!img.naturalWidth)return;
-    const figure=img.closest('.figure');
     figure.classList.remove('pending');
     const root=figure.closest('.step,.shot-slot');
     const guide=root&&root.querySelector('.shot-guide');
     if(guide)guide.style.display='none';
   };
-  if(img.complete)reveal();
-  else img.addEventListener('load',reveal,{once:true});
+  const probe=new Image();
+  probe.onload=reveal;
+  probe.src=img.getAttribute('src');
 });
 </script>
 </body>
