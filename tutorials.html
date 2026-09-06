@@ -5,89 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ARK チュートリアル</title>
 <style>
-:root{--bg:#071015;--panel:#0e1b22;--line:#294750;--text:#eef8fb;--muted:#9db5bc;--accent:#4fe4ea}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);
-background:radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),linear-gradient(180deg,#071015,#09151b 60%,#071015)}
-nav{position:sticky;top:0;padding:10px 16px;background:rgba(7,16,21,.94);border-bottom:1px solid rgba(79,228,234,.15)}
-nav a{color:#edfeff;text-decoration:none;font-weight:700}
-main{width:min(960px,calc(100% - 28px));margin:auto;padding:40px 0 60px}
-.kicker{color:#a4f9fc;font-size:11px;font-weight:800;letter-spacing:.18em}
-h1{font-size:clamp(34px,6vw,56px);margin:8px 0 8px}.lead{color:#b7cbd0;margin:0 0 24px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{display:block;text-decoration:none;color:inherit;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
-.card:hover{border-color:rgba(79,228,234,.55)}.num{color:#6b8c94;font-size:12px;font-weight:800;letter-spacing:.12em}
-.card h2{margin:9px 0 8px;font-size:24px}.card p{margin:0;color:#a9bec4;line-height:1.8;font-size:14px}
-.arrow{margin-top:18px;color:var(--accent);font-weight:800}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-
-/* Common top navigation — matches the Server Settings page */
-.top-nav{
-  position:sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 16px;
-  background:rgba(7,16,21,.92);
-  border-bottom:1px solid rgba(79,228,234,.16);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.top-nav a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  border:1px solid rgba(79,228,234,.24);
-  border-radius:10px;
-  background:#102a32;
-  color:#e8fdff;
-  text-decoration:none;
-  font-weight:700;
-  font-size:13px;
-}
-.top-nav a:hover{
-  background:#163942;
-  border-color:rgba(79,228,234,.5);
-}
-.top-nav .page-name{
-  color:#78959d;
-  font-size:12px;
-}
-.top-nav-links{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
+:root{--bg:#071015;--panel:#0e1b22;--line:#294750;--text:#eef8fb;--muted:#9db5bc;--accent:#4fe4ea;--accent2:#a4f9fc}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;color:var(--text);background:radial-gradient(circle at 85% -5%,rgba(79,228,234,.11),transparent 28%),linear-gradient(180deg,#071015,#09151b 60%,#071015)}
+.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px)}.top-nav a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}.top-nav a:hover{background:#163942;border-color:rgba(79,228,234,.5)}
+main{width:min(960px,calc(100% - 28px));margin:auto;padding:40px 0 60px}.kicker{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:.18em}h1{font-size:clamp(34px,6vw,56px);margin:8px 0 8px}.lead{color:#b7cbd0;margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{display:block;text-decoration:none;color:inherit;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}.card:hover{border-color:rgba(79,228,234,.55)}.card.asa{border-color:rgba(79,228,234,.38);background:linear-gradient(145deg,#102a31,#0e1b22)}.num{color:#6b8c94;font-size:12px;font-weight:800;letter-spacing:.12em}.card.asa .num{color:var(--accent2)}.card h2{margin:9px 0 8px;font-size:24px}.card p{margin:0;color:#a9bec4;line-height:1.8;font-size:14px}.arrow{margin-top:18px;color:var(--accent);font-weight:800}@media(max-width:700px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<nav class="top-nav">
-  <a href="index.html" aria-label="TOPへ戻る">← TOP</a>
-</nav>
+<nav class="top-nav"><a href="index.html" aria-label="TOPへ戻る">← TOP</a></nav>
 <main>
-  <div class="kicker">ARK: SURVIVAL EVOLVED / BEGINNER</div>
-  <h1>チュートリアル</h1>
-  <p class="lead">最初に知っておくと遊びやすいことを、順番にまとめています。</p>
-  <section class="grid">
-    <a class="card" href="beginner_base_2x2_stats.html">
-      <div class="num">TUTORIAL 01</div>
-      <h2>拠点づくり</h2>
-      <p>素材集め、エングラム、能力値、2×2の最初の拠点を作るところまで。</p>
-      <div class="arrow">開く →</div>
-    </a>
-    <a class="card" href="tutorial_taming.html">
-      <div class="num">TUTORIAL 02</div>
-      <h2>テイム方法</h2>
-      <p>ボーラ、気絶、餌、気絶値の維持、サドルまで。最初のテイムの基本。</p>
-      <div class="arrow">開く →</div>
-    </a>
-  </section>
+<div class="kicker">ARK / BEGINNER</div>
+<h1>チュートリアル</h1>
+<p class="lead">最初に知っておくと遊びやすいことを、順番にまとめています。</p>
+<section class="grid">
+<a class="card" href="beginner_base_2x2_stats.html"><div class="num">TUTORIAL 01</div><h2>拠点づくり</h2><p>素材集め、エングラム、能力値、2×2の最初の拠点を作るところまで。</p><div class="arrow">開く →</div></a>
+<a class="card" href="tutorial_taming.html"><div class="num">TUTORIAL 02</div><h2>テイム方法</h2><p>ボーラ、気絶、餌、気絶値の維持、サドルまで。最初のテイムの基本。</p><div class="arrow">開く →</div></a>
+<a class="card asa" href="tutorial_building_asa.html"><div class="num">ASA / TUTORIAL 03</div><h2>ASAの建築方法</h2><p>壁を設置状態にしてRで切り替え。ドア枠・窓枠など、ASA特有の建築パーツの選び方。</p><div class="arrow">開く →</div></a>
+</section>
 </main>
 </body>
 </html>
