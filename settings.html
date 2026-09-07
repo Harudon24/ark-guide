@@ -3,456 +3,125 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ARK Server Profile — The Island / PvE</title>
+<title>ARK ASA Server Profile — The Island / PvE</title>
 <style>
 :root{
- --bg:#071014;
- --bg2:#0a171d;
- --panel:rgba(15,31,38,.78);
- --panel-solid:#0e1d23;
- --panel-soft:#10252d;
- --line:rgba(141,236,238,.14);
- --line-strong:rgba(103,224,228,.32);
- --text:#ecf7f8;
- --muted:#8faab0;
- --dim:#678188;
- --cyan:#48e2e5;
- --cyan2:#8cf6f8;
- --blue:#7cb8ff;
- --green:#78e2ac;
- --amber:#ffd07a;
- --red:#ff8f99;
- --shadow:0 26px 80px rgba(0,0,0,.35);
+ --bg:#071014;--bg2:#0a171d;--panel:rgba(15,31,38,.78);--panel-solid:#0e1d23;--panel-soft:#10252d;
+ --line:rgba(141,236,238,.14);--line-strong:rgba(103,224,228,.32);--text:#ecf7f8;--muted:#8faab0;--dim:#678188;
+ --cyan:#48e2e5;--cyan2:#8cf6f8;--blue:#7cb8ff;--green:#78e2ac;--amber:#ffd07a;--red:#ff8f99;--shadow:0 26px 80px rgba(0,0,0,.35)
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;color:var(--text);
- font-family:Inter,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;
- line-height:1.68;
- background:
- radial-gradient(circle at 75% -10%,rgba(72,226,229,.10),transparent 34%),
- radial-gradient(circle at -5% 20%,rgba(124,184,255,.08),transparent 28%),
- linear-gradient(180deg,#061015 0%,#081319 44%,#061014 100%);
- min-height:100vh;
-}
-body:before{
- content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
- background-image:
- linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
- linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
- background-size:42px 42px;
- mask-image:linear-gradient(to bottom,black,transparent 72%);
-}
-a{color:var(--cyan2)}
-.shell{max-width:1280px;margin:auto;padding:22px 24px 56px}
-.topbar{
- display:flex;justify-content:space-between;align-items:center;gap:18px;
- padding:10px 2px 22px;color:var(--muted);font-size:13px
-}
-.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.12em;color:#dff9fa}
-.brandmark{
- width:30px;height:30px;border:1px solid var(--line-strong);border-radius:9px;
- display:grid;place-items:center;background:linear-gradient(145deg,#14333a,#0b1b20);
- box-shadow:inset 0 0 20px rgba(72,226,229,.08)
-}
-.brandmark:before{content:"A";color:var(--cyan);font-size:14px}
-.topmeta{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.mini{
- border:1px solid var(--line);background:rgba(15,31,38,.55);
- color:#a9c1c6;border-radius:999px;padding:5px 9px
-}
-.hero{
- position:relative;overflow:hidden;
- background:linear-gradient(135deg,rgba(19,45,53,.92),rgba(9,22,27,.92) 62%,rgba(10,30,35,.86));
- border:1px solid var(--line-strong);border-radius:26px;padding:36px;
- box-shadow:var(--shadow);
-}
-.hero:after{
- content:"";position:absolute;width:340px;height:340px;border-radius:50%;
- right:-110px;top:-160px;background:radial-gradient(circle,rgba(72,226,229,.17),transparent 68%);
-}
-.eyebrow{color:var(--cyan2);font-weight:700;letter-spacing:.16em;font-size:12px;text-transform:uppercase}
-h1{font-size:clamp(34px,5vw,64px);line-height:1.02;margin:9px 0 14px;letter-spacing:-.045em}
-.subtitle{max-width:840px;color:#bed0d4;font-size:17px;margin:0}
-.profile-strip{
- display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px;position:relative;z-index:1
-}
-.metric{
- min-height:92px;background:rgba(5,18,23,.54);border:1px solid var(--line);
- border-radius:16px;padding:13px 14px;backdrop-filter:blur(6px)
-}
-.metric .label{font-size:11px;color:var(--muted);letter-spacing:.04em}
-.metric .value{font-size:23px;font-weight:800;margin-top:4px;color:#f1feff}
-.metric .hint{font-size:11px;color:var(--dim);margin-top:2px}
-.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;margin-top:22px}
-aside{
- position:sticky;top:16px;align-self:start;border:1px solid var(--line);
- border-radius:20px;background:rgba(10,24,29,.80);padding:13px;backdrop-filter:blur(12px)
-}
-aside .cap{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.15em;padding:5px 9px 9px}
-aside a{
- display:flex;align-items:center;gap:9px;text-decoration:none;color:#a9bdc2;
- padding:9px 10px;border-radius:11px;font-size:13px;transition:.18s ease
-}
-aside a:before{content:"";width:5px;height:5px;border-radius:50%;background:#39545a}
-aside a:hover{background:#112931;color:white}
-aside a:hover:before{background:var(--cyan);box-shadow:0 0 10px rgba(72,226,229,.8)}
-main{min-width:0}
-.section{
- border:1px solid var(--line);border-radius:22px;background:var(--panel);
- box-shadow:0 12px 40px rgba(0,0,0,.16);padding:25px;margin-bottom:18px;
- backdrop-filter:blur(10px)
-}
-.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:16px}
-.section-kicker{color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:750}
-h2{font-size:26px;margin:2px 0 0;letter-spacing:-.02em}
-.note{font-size:12px;color:var(--muted)}
-.philosophy{
- display:grid;grid-template-columns:1.15fr .85fr;gap:14px
-}
-.statement{
- border-radius:17px;padding:19px;background:linear-gradient(140deg,#102b32,#0c1d23);
- border:1px solid var(--line-strong)
-}
-.statement strong{color:var(--cyan2)}
-.scale-card{border:1px solid var(--line);border-radius:17px;background:#0b1a20;padding:16px}
-.scale-title{font-size:12px;color:#a8bec3;margin-bottom:13px}
-.scale-line{display:grid;grid-template-columns:92px 1fr 42px;align-items:center;gap:9px;margin:9px 0;font-size:12px}
-.bar{height:7px;border-radius:999px;background:#152930;overflow:hidden}
-.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#4bdce0,#8bf5f6)}
-.fill.amber{background:linear-gradient(90deg,#d2a657,#ffd17a)}
-.fill.blue{background:linear-gradient(90deg,#598cd2,#7eb6ff)}
-.settings-toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:13px}
-.filters{display:flex;gap:7px;flex-wrap:wrap}
-button{
- border:1px solid var(--line);border-radius:10px;background:#102229;color:#cce0e3;
- padding:7px 10px;cursor:pointer;font:inherit;font-size:12px
-}
-button:hover,button.active{border-color:var(--line-strong);background:#14323a;color:white}
-.setting-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.setting{
- display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;
- border:1px solid var(--line);background:rgba(7,18,23,.60);
- border-radius:15px;padding:13px 14px;transition:.16s ease
-}
-.setting:hover{border-color:rgba(72,226,229,.26);transform:translateY(-1px)}
-.setting .cat{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#68878e}
-.setting .name{font-size:14px;font-weight:650;margin-top:2px}
-.setting .desc{font-size:11px;color:var(--muted);margin-top:3px}
-.valwrap{text-align:right;min-width:82px}
-.value{font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}
-.state{font-size:10px;margin-top:1px}
-.state.changed{color:var(--cyan)}
-.state.keep{color:#718a90}
-.hidden{display:none!important}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px}
-table{width:100%;border-collapse:collapse;min-width:690px}
-th,td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#78959b;background:#0c1b21}
-td{font-size:13px}
-tr:last-child td{border-bottom:none}
-.current{font-weight:800;color:#f2feff}
-.preset{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.preset-card{border:1px solid var(--line);border-radius:17px;padding:16px;background:#0a191f}
-.preset-card.reco{border-color:var(--line-strong);background:linear-gradient(145deg,#10272e,#0a191f)}
-.preset-label{font-size:11px;color:var(--muted)}
-.preset-name{font-size:18px;font-weight:800;margin:4px 0 10px}
-.preset ul{margin:0;padding-left:17px;color:#a9bdc2;font-size:12px}
-.reading{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.rule{padding:16px;border:1px solid var(--line);border-radius:16px;background:#0b1a20}
-.rule h3{font-size:14px;margin:0 0 8px}
-.rule ul{margin:0;padding-left:18px;color:#9db3b8;font-size:12px}
-.friend{
- background:
- radial-gradient(circle at 95% 0,rgba(72,226,229,.10),transparent 35%),
- linear-gradient(145deg,#10242b,#0a191e);
-}
-.friend-intro{font-size:20px;font-weight:700;line-height:1.45;max-width:850px}
-.friend-intro em{font-style:normal;color:var(--cyan2)}
-.friend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:17px}
-.friend-item{border:1px solid var(--line);border-radius:14px;padding:13px;background:rgba(5,15,19,.48)}
-.friend-item .k{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
-.friend-item .v{font-size:14px;font-weight:650;margin-top:3px}
-footer{padding:8px 4px 0;color:#58757b;font-size:11px}
-@media(max-width:1050px){
- .profile-strip{grid-template-columns:repeat(3,1fr)}
- .setting-grid{grid-template-columns:1fr}
- .friend-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:820px){
- .layout{grid-template-columns:1fr}aside{position:static;display:flex;overflow:auto;gap:3px}
- aside .cap{display:none}aside a{white-space:nowrap}.philosophy,.reading{grid-template-columns:1fr}
-}
-@media(max-width:620px){
- .shell{padding:14px}.hero{padding:24px}.profile-strip{grid-template-columns:repeat(2,1fr)}
- .preset{grid-template-columns:1fr}.friend-grid{grid-template-columns:1fr}
- .section{padding:18px}
-}
-@media print{
- body{background:white;color:#111}body:before,aside,.settings-toolbar{display:none}
- .shell{max-width:none;padding:0}.layout{display:block}.hero,.section{box-shadow:none;background:white;border:1px solid #bbb}
- .metric,.setting,.preset-card,.rule,.friend-item,.statement,.scale-card{background:white;border-color:#ccc}
- .subtitle,.note,.setting .desc,.preset ul,.rule ul,.friend-item .k{color:#555}
- .value,.metric .value,.friend-intro,.friend-item .v{color:#111}.section{break-inside:avoid}
-}
-
-.top-nav{
-  position:sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 16px;
-  background:rgba(7,16,21,.92);
-  border-bottom:1px solid rgba(79,228,234,.16);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.top-nav a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  border:1px solid rgba(79,228,234,.24);
-  border-radius:10px;
-  background:#102a32;
-  color:#e8fdff;
-  text-decoration:none;
-  font-weight:700;
-  font-size:13px;
-}
-.top-nav a:hover{
-  background:#163942;
-  border-color:rgba(79,228,234,.5);
-}
-.top-nav .page-name{
-  color:#78959d;
-  font-size:12px;
-}
-
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.68;background:radial-gradient(circle at 75% -10%,rgba(72,226,229,.10),transparent 34%),radial-gradient(circle at -5% 20%,rgba(124,184,255,.08),transparent 28%),linear-gradient(180deg,#061015 0%,#081319 44%,#061014 100%);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 72%)}
+a{color:var(--cyan2)}.shell{max-width:1280px;margin:auto;padding:22px 24px 56px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:10px 2px 22px;color:var(--muted);font-size:13px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.12em;color:#dff9fa}.brandmark{width:30px;height:30px;border:1px solid var(--line-strong);border-radius:9px;display:grid;place-items:center;background:linear-gradient(145deg,#14333a,#0b1b20);box-shadow:inset 0 0 20px rgba(72,226,229,.08)}.brandmark:before{content:"A";color:var(--cyan);font-size:14px}.topmeta{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.mini{border:1px solid var(--line);background:rgba(15,31,38,.55);color:#a9c1c6;border-radius:999px;padding:5px 9px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(19,45,53,.92),rgba(9,22,27,.92) 62%,rgba(10,30,35,.86));border:1px solid var(--line-strong);border-radius:26px;padding:36px;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-110px;top:-160px;background:radial-gradient(circle,rgba(72,226,229,.17),transparent 68%)}.eyebrow{color:var(--cyan2);font-weight:700;letter-spacing:.16em;font-size:12px;text-transform:uppercase}h1{font-size:clamp(34px,5vw,64px);line-height:1.02;margin:9px 0 14px;letter-spacing:-.045em}.subtitle{max-width:840px;color:#bed0d4;font-size:17px;margin:0}.profile-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px;position:relative;z-index:1}.metric{min-height:92px;background:rgba(5,18,23,.54);border:1px solid var(--line);border-radius:16px;padding:13px 14px;backdrop-filter:blur(6px)}.metric .label{font-size:11px;color:var(--muted);letter-spacing:.04em}.metric .value{font-size:23px;font-weight:800;margin-top:4px;color:#f1feff}.metric .hint{font-size:11px;color:var(--dim);margin-top:2px}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;margin-top:22px}aside{position:sticky;top:66px;align-self:start;border:1px solid var(--line);border-radius:20px;background:rgba(10,24,29,.80);padding:13px;backdrop-filter:blur(12px)}aside .cap{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.15em;padding:5px 9px 9px}aside a{display:flex;align-items:center;gap:9px;text-decoration:none;color:#a9bdc2;padding:9px 10px;border-radius:11px;font-size:13px;transition:.18s ease}aside a:before{content:"";width:5px;height:5px;border-radius:50%;background:#39545a}aside a:hover{background:#112931;color:white}aside a:hover:before{background:var(--cyan);box-shadow:0 0 10px rgba(72,226,229,.8)}main{min-width:0}.section{border:1px solid var(--line);border-radius:22px;background:var(--panel);box-shadow:0 12px 40px rgba(0,0,0,.16);padding:25px;margin-bottom:18px;backdrop-filter:blur(10px)}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:16px}.section-kicker{color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:750}h2{font-size:26px;margin:2px 0 0;letter-spacing:-.02em}.note{font-size:12px;color:var(--muted)}
+.philosophy{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.statement{border-radius:17px;padding:19px;background:linear-gradient(140deg,#102b32,#0c1d23);border:1px solid var(--line-strong)}.statement strong{color:var(--cyan2)}.scale-card{border:1px solid var(--line);border-radius:17px;background:#0b1a20;padding:16px}.scale-title{font-size:12px;color:#a8bec3;margin-bottom:13px}.scale-line{display:grid;grid-template-columns:92px 1fr 42px;align-items:center;gap:9px;margin:9px 0;font-size:12px}.bar{height:7px;border-radius:999px;background:#152930;overflow:hidden}.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#4bdce0,#8bf5f6)}.fill.amber{background:linear-gradient(90deg,#d2a657,#ffd17a)}.fill.blue{background:linear-gradient(90deg,#598cd2,#7eb6ff)}
+.settings-toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:13px}.filters{display:flex;gap:7px;flex-wrap:wrap}button{border:1px solid var(--line);border-radius:10px;background:#102229;color:#cce0e3;padding:7px 10px;cursor:pointer;font:inherit;font-size:12px}button:hover,button.active{border-color:var(--line-strong);background:#14323a;color:white}.setting-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.setting{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;border:1px solid var(--line);background:rgba(7,18,23,.60);border-radius:15px;padding:13px 14px;transition:.16s ease}.setting:hover{border-color:rgba(72,226,229,.26);transform:translateY(-1px)}.setting .cat{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#68878e}.setting .name{font-size:14px;font-weight:650;margin-top:2px}.setting .desc{font-size:11px;color:var(--muted);margin-top:3px}.valwrap{text-align:right;min-width:82px}.value{font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}.state{font-size:10px;margin-top:1px}.state.changed{color:var(--cyan)}.state.keep{color:#718a90}.hidden{display:none!important}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px}table{width:100%;border-collapse:collapse;min-width:690px}th,td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#78959b;background:#0c1b21}td{font-size:13px}tr:last-child td{border-bottom:none}.current{font-weight:800;color:#f2feff}.reading{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rule{padding:16px;border:1px solid var(--line);border-radius:16px;background:#0b1a20}.rule h3{font-size:14px;margin:0 0 8px}.rule ul{margin:0;padding-left:18px;color:#9db3b8;font-size:12px}.friend{background:radial-gradient(circle at 95% 0,rgba(72,226,229,.10),transparent 35%),linear-gradient(145deg,#10242b,#0a191e)}.friend-intro{font-size:20px;font-weight:700;line-height:1.45;max-width:900px}.friend-intro em{font-style:normal;color:var(--cyan2)}footer{padding:8px 4px 0;color:#58757b;font-size:11px}
+.top-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(7,16,21,.92);border-bottom:1px solid rgba(79,228,234,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}.top-nav a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(79,228,234,.24);border-radius:10px;background:#102a32;color:#e8fdff;text-decoration:none;font-weight:700;font-size:13px}.top-nav a:hover{background:#163942;border-color:rgba(79,228,234,.5)}.top-nav .page-name{color:#78959d;font-size:12px}
+@media(max-width:1050px){.profile-strip{grid-template-columns:repeat(3,1fr)}.setting-grid{grid-template-columns:1fr}}@media(max-width:820px){.layout{grid-template-columns:1fr}aside{position:static;display:flex;overflow:auto;gap:3px}aside .cap{display:none}aside a{white-space:nowrap}.philosophy,.reading{grid-template-columns:1fr}}@media(max-width:620px){.shell{padding:14px}.hero{padding:24px}.profile-strip{grid-template-columns:repeat(2,1fr)}.section{padding:18px}}@media print{body{background:white;color:#111}body:before,aside,.settings-toolbar,.top-nav{display:none}.shell{max-width:none;padding:0}.layout{display:block}.hero,.section{box-shadow:none;background:white;border:1px solid #bbb}.metric,.setting,.rule,.statement,.scale-card{background:white;border-color:#ccc}.subtitle,.note,.setting .desc,.rule ul{color:#555}.value,.metric .value,.friend-intro{color:#111}.section{break-inside:avoid}}
 </style>
 </head>
 <body>
-<nav class="top-nav">
-  <a href="index.html" aria-label="TOPへ戻る">← TOP</a>
-  <span class="page-name">サーバー設定</span>
-</nav>
-
+<nav class="top-nav"><a href="index.html" aria-label="TOPへ戻る">← TOP</a><span class="page-name">サーバー設定</span></nav>
 <div class="shell">
- <div class="topbar">
- <div class="brand"><span class="brandmark"></span>ARK SERVER PROFILE</div>
- <div class="topmeta"><span class="mini">ASE</span><span class="mini">XServer GAMEs</span><span class="mini">PvE</span></div>
- </div>
-
+ <div class="topbar"><div class="brand"><span class="brandmark"></span>ARK SERVER PROFILE</div><div class="topmeta"><span class="mini">ASA</span><span class="mini">Nitrado</span><span class="mini">PvE</span></div></div>
  <section class="hero">
- <div class="eyebrow">The Island / Private Server</div>
- <h1>サーバー設定</h1>
- <p class="subtitle">戦闘や恐竜の強さはARK本来の手応えを残しつつ、素材集め・テイム・繁殖など時間を使う部分を快適にした構成。</p>
-
- <div class="profile-strip">
- <div class="metric"><div class="label">XP</div><div class="value">1.5×</div><div class="hint">成長は少し速め</div></div>
- <div class="metric"><div class="label">HARVEST</div><div class="value">2×</div><div class="hint">採取作業を軽減</div></div>
- <div class="metric"><div class="label">TAMING</div><div class="value">4×</div><div class="hint">待ち時間を短縮</div></div>
- <div class="metric"><div class="label">BREEDING</div><div class="value">20×</div><div class="hint">孵化・成長</div></div>
- <div class="metric"><div class="label">WILD MAX LV</div><div class="value">150</div><div class="hint">Difficulty 5</div></div>
- <div class="metric"><div class="label">MODE</div><div class="value">PvE</div><div class="hint">協力</div></div>
- </div>
+  <div class="eyebrow">The Island / Private Server</div><h1>サーバー設定</h1>
+  <p class="subtitle">現在のARK: Survival Ascendedサーバー設定。個人ワールド寄りの快適設定をNitradoへ反映し、採取・テイム・繁殖・農業などの待ち時間を大きく短縮しています。</p>
+  <div class="profile-strip">
+   <div class="metric"><div class="label">XP</div><div class="value">1.5×</div><div class="hint">レベル上げを軽減</div></div>
+   <div class="metric"><div class="label">HARVEST</div><div class="value">2×</div><div class="hint">採取量</div></div>
+   <div class="metric"><div class="label">TAMING</div><div class="value">10×</div><div class="hint">テイム待ちを大幅短縮</div></div>
+   <div class="metric"><div class="label">BREEDING</div><div class="value">20×</div><div class="hint">孵化・成長</div></div>
+   <div class="metric"><div class="label">CROP</div><div class="value">5×</div><div class="hint">作物の成長</div></div>
+   <div class="metric"><div class="label">WILD MAX LV</div><div class="value">150</div><div class="hint">Difficulty 5</div></div>
+  </div>
  </section>
-
  <div class="layout">
- <aside>
- <div class="cap">Navigation</div>
- <a href="#profile">プレイ感</a>
- <a href="#settings">設定一覧</a>
- <a href="#tuning">次回の調整</a>
- <a href="#reading">倍率の読み方</a>
- <a href="#summary">要約</a>
- </aside>
+  <aside><div class="cap">Navigation</div><a href="#profile">プレイ感</a><a href="#settings">設定一覧</a><a href="#changes">主な変更</a><a href="#reading">倍率の読み方</a><a href="#summary">要約</a></aside>
+  <main>
+   <section class="section" id="profile">
+    <div class="section-head"><div><div class="section-kicker">Play profile</div><h2>今のプレイ感</h2></div><div class="note">ASA / The Island / PvE</div></div>
+    <div class="philosophy">
+     <div class="statement"><strong>時間のかかる部分をかなり快適にした設定。</strong><br><br>採取量2倍・テイム10倍・孵化/成長20倍・作物成長5倍。さらにプレイヤー攻撃力1.5倍、体力回復1.25倍、食料・水・スタミナ消費0.75倍で、個人ワールドに近い遊びやすさへ寄せています。</div>
+     <div class="scale-card"><div class="scale-title">体感バランス</div><div class="scale-line"><span>戦闘</span><div class="bar"><div class="fill blue" style="width:65%"></div></div><b>やや楽</b></div><div class="scale-line"><span>サバイバル</span><div class="bar"><div class="fill blue" style="width:65%"></div></div><b>快適</b></div><div class="scale-line"><span>採取</span><div class="bar"><div class="fill" style="width:72%"></div></div><b>快適</b></div><div class="scale-line"><span>テイム</span><div class="bar"><div class="fill" style="width:95%"></div></div><b>高速</b></div><div class="scale-line"><span>繁殖</span><div class="bar"><div class="fill amber" style="width:95%"></div></div><b>高速</b></div></div>
+    </div>
+   </section>
 
- <main>
- <section class="section" id="profile">
- <div class="section-head">
- <div><div class="section-kicker">Play profile</div><h2>今のプレイ感</h2></div>
- <div class="note">The Island</div>
- </div>
+   <section class="section" id="settings">
+    <div class="section-head"><div><div class="section-kicker">Configuration</div><h2>現在の設定</h2></div><div class="note">Nitradoへ反映した主要設定</div></div>
+    <div class="settings-toolbar"><div class="filters"><button class="active" onclick="filterSettings('all',this)">すべて</button><button onclick="filterSettings('changed',this)">快適化した項目</button><button onclick="filterSettings('core',this)">重要項目</button></div><button onclick="window.print()">印刷 / PDF</button></div>
+    <div class="setting-grid" id="settingGrid">
+     <div class="setting core"><div><div class="cat">World</div><div class="name">難易度 / 最大難易度</div><div class="desc">野生恐竜Lv150の基準。</div></div><div class="valwrap"><div class="value">1 / 5</div><div class="state keep">Lv150</div></div></div>
+     <div class="setting changed core"><div><div class="cat">World</div><div class="name">経験値倍率</div><div class="desc">レベル上げを少し速く。</div></div><div class="valwrap"><div class="value">1.5×</div><div class="state changed">標準 1.0</div></div></div>
+     <div class="setting changed"><div><div class="cat">World</div><div class="name">昼 / 夜の経過速度</div><div class="desc">昼を長く、夜を短めに。</div></div><div class="valwrap"><div class="value">0.5 / 1.5</div><div class="state changed">昼長め / 夜短め</div></div></div>
 
- <div class="philosophy">
- <div class="statement">
- <strong>「強さ」はほぼ標準。</strong><br>
- プレイヤー・恐竜の攻撃力、被ダメージ、体力回復などは1.0のまま。<br><br>
- 一方で、採取・テイム・繁殖・資源復活など、待ち時間や反復作業になりやすい部分を短縮している。
- </div>
- <div class="scale-card">
- <div class="scale-title">体感バランス</div>
- <div class="scale-line"><span>戦闘</span><div class="bar"><div class="fill blue" style="width:50%"></div></div><b>標準</b></div>
- <div class="scale-line"><span>サバイバル</span><div class="bar"><div class="fill blue" style="width:50%"></div></div><b>標準</b></div>
- <div class="scale-line"><span>採取</span><div class="bar"><div class="fill" style="width:68%"></div></div><b>快適</b></div>
- <div class="scale-line"><span>テイム</span><div class="bar"><div class="fill" style="width:76%"></div></div><b>快適</b></div>
- <div class="scale-line"><span>繁殖</span><div class="bar"><div class="fill amber" style="width:92%"></div></div><b>高速</b></div>
- </div>
- </div>
- </section>
+     <div class="setting changed core"><div><div class="cat">Player</div><div class="name">攻撃力</div><div class="desc">プレイヤーの与ダメージを増加。</div></div><div class="valwrap"><div class="value">1.5×</div><div class="state changed">1.0 → 1.5</div></div></div>
+     <div class="setting core"><div><div class="cat">Player</div><div class="name">被ダメージ</div><div class="desc">受けるダメージ倍率は標準。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">標準</div></div></div>
+     <div class="setting changed"><div><div class="cat">Player</div><div class="name">食料 / 水の消費</div><div class="desc">減り方を25%軽減。</div></div><div class="valwrap"><div class="value">0.75</div><div class="state changed">1.0 → 0.75</div></div></div>
+     <div class="setting changed"><div><div class="cat">Player</div><div class="name">スタミナ消費</div><div class="desc">スタミナの減り方を25%軽減。</div></div><div class="valwrap"><div class="value">0.75</div><div class="state changed">1.0 → 0.75</div></div></div>
+     <div class="setting changed"><div><div class="cat">Player</div><div class="name">体力回復</div><div class="desc">自然回復を少し速く。</div></div><div class="valwrap"><div class="value">1.25×</div><div class="state changed">1.0 → 1.25</div></div></div>
+     <div class="setting changed"><div><div class="cat">Craft</div><div class="name">カスタムレシピ効果 / スキル</div><div class="desc">カスタム料理の効果とスキル倍率。</div></div><div class="valwrap"><div class="value">2× / 2×</div><div class="state changed">1.0 → 2.0</div></div></div>
+     <div class="setting changed"><div><div class="cat">Craft</div><div class="name">クラフトスキルボーナス</div><div class="desc">クラフト品質へのスキル効果を強化。</div></div><div class="valwrap"><div class="value">2×</div><div class="state changed">1.0 → 2.0</div></div></div>
 
- <section class="section" id="settings">
- <div class="section-head">
- <div><div class="section-kicker">Configuration</div><h2>現在の設定</h2></div>
- <div class="note">変更箇所と重要な標準設定を記録</div>
- </div>
+     <div class="setting core"><div><div class="cat">Dino</div><div class="name">攻撃力 / 被ダメージ</div><div class="desc">恐竜の基本戦闘倍率は標準。</div></div><div class="valwrap"><div class="value">1.0 / 1.0</div><div class="state keep">標準</div></div></div>
+     <div class="setting changed"><div><div class="cat">Dino</div><div class="name">スタミナ消費</div><div class="desc">恐竜のスタミナの減りを軽減。</div></div><div class="valwrap"><div class="value">0.75</div><div class="state changed">1.0 → 0.75</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Dino</div><div class="name">採取ダメージ</div><div class="desc">採取恐竜で資源を集めやすく。</div></div><div class="valwrap"><div class="value">2×</div><div class="state changed">1.0 → 2.0</div></div></div>
 
- <div class="settings-toolbar">
- <div class="filters">
- <button class="active" onclick="filterSettings('all',this)">すべて</button>
- <button onclick="filterSettings('changed',this)">変更した項目</button>
- <button onclick="filterSettings('core',this)">重要項目</button>
- </div>
- <button onclick="window.print()">印刷 / PDF</button>
- </div>
+     <div class="setting changed core"><div><div class="cat">Taming</div><div class="name">テイム速度</div><div class="desc">気絶後の待ち時間を大幅短縮。</div></div><div class="valwrap"><div class="value">10×</div><div class="state changed">4.0 → 10.0</div></div></div>
 
- <div class="setting-grid" id="settingGrid">
- <div class="setting changed core"><div><div class="cat">World</div><div class="name">難易度</div><div class="desc">最大難易度5.0と組み合わせてLv150環境。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state changed">0.2 → 1.0</div></div></div>
- <div class="setting core"><div><div class="cat">World</div><div class="name">最大難易度</div><div class="desc">野生恐竜の最大Lvを150にする基準。</div></div><div class="valwrap"><div class="value">5.0</div><div class="state keep">維持</div></div></div>
- <div class="setting changed core"><div><div class="cat">World</div><div class="name">経験値倍率</div><div class="desc">レベル上げを少しだけ速く。</div></div><div class="valwrap"><div class="value">1.5×</div><div class="state changed">1.0 → 1.5</div></div></div>
- <div class="setting changed"><div><div class="cat">World</div><div class="name">日中の経過速度</div><div class="desc">値を下げて昼を長くする。</div></div><div class="valwrap"><div class="value">0.5</div><div class="state changed">昼 約2倍</div></div></div>
- <div class="setting changed"><div><div class="cat">World</div><div class="name">夜間の経過速度</div><div class="desc">夜を短めにして探索時間を確保。</div></div><div class="valwrap"><div class="value">1.5</div><div class="state changed">夜 短縮</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Breeding</div><div class="name">卵の孵化速度</div><div class="desc">孵化待ちを大幅短縮。</div></div><div class="valwrap"><div class="value">20×</div><div class="state changed">標準 1.0</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Breeding</div><div class="name">赤ちゃんの成長速度</div><div class="desc">育成時間を大幅短縮。</div></div><div class="valwrap"><div class="value">20×</div><div class="state changed">標準 1.0</div></div></div>
+     <div class="setting changed"><div><div class="cat">Breeding</div><div class="name">交配間隔 / 産卵間隔</div><div class="desc">次の交配・産卵までの期間を約1/4。</div></div><div class="valwrap"><div class="value">0.25 / 0.25</div><div class="state changed">期間 1/4</div></div></div>
+     <div class="setting changed"><div><div class="cat">Breeding</div><div class="name">刷り込み要求の間隔</div><div class="desc">世話要求の間隔を短縮。</div></div><div class="valwrap"><div class="value">0.10</div><div class="state changed">期間 1/10</div></div></div>
+     <div class="setting changed"><div><div class="cat">Breeding</div><div class="name">刷り込み猶予期間</div><div class="desc">世話要求の猶予を広げる。</div></div><div class="valwrap"><div class="value">6×</div><div class="state changed">1.0 → 6.0</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Breeding</div><div class="name">刷り込みステータス効果</div><div class="desc">100%刷り込み時のステータス効果を強化。</div></div><div class="valwrap"><div class="value">1.5×</div><div class="state changed">1.0 → 1.5</div></div></div>
 
- <div class="setting core"><div><div class="cat">Player</div><div class="name">攻撃力 / 被ダメージ</div><div class="desc">戦闘バランスは標準のまま。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
- <div class="setting"><div><div class="cat">Player</div><div class="name">食料・水・スタミナ・回復</div><div class="desc">サバイバル要素は標準。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
- <div class="setting changed core"><div><div class="cat">Player</div><div class="name">LvUP時 重量上昇率</div><div class="desc">重量に振った時の伸びを1.5倍。</div></div><div class="valwrap"><div class="value">1.5×</div><div class="state changed">1.0 → 1.5</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Resources</div><div class="name">採取量</div><div class="desc">通常の採取量を2倍。</div></div><div class="valwrap"><div class="value">2×</div><div class="state changed">1.0 → 2.0</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Resources</div><div class="name">資源リスポーン期間</div><div class="desc">値が小さいほど早く復活。</div></div><div class="valwrap"><div class="value">0.25</div><div class="state changed">期間 1/4</div></div></div>
+     <div class="setting changed core"><div><div class="cat">Resources</div><div class="name">作物の成長速度</div><div class="desc">農業の待ち時間を短縮。</div></div><div class="valwrap"><div class="value">5×</div><div class="state changed">2.0 → 5.0</div></div></div>
+     <div class="setting changed"><div><div class="cat">Loot</div><div class="name">クレート / 釣り品質</div><div class="desc">戦利品の品質倍率を少し上げる。</div></div><div class="valwrap"><div class="value">1.5× / 1.5×</div><div class="state changed">1.0 → 1.5</div></div></div>
+     <div class="setting changed"><div><div class="cat">Resources</div><div class="name">燃料消費間隔</div><div class="desc">燃料消費の間隔を2倍に設定。</div></div><div class="valwrap"><div class="value">2×</div><div class="state changed">1.0 → 2.0</div></div></div>
 
- <div class="setting core"><div><div class="cat">Dino</div><div class="name">攻撃力 / 被ダメージ</div><div class="desc">野生・テイム恐竜の強さは標準。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
- <div class="setting core"><div><div class="cat">Dino</div><div class="name">出現倍率</div><div class="desc">The Island本来の出現密度。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
+     <div class="setting core"><div><div class="cat">QoL</div><div class="name">三人称視点 / マップ位置 / クロスヘア</div><div class="desc">探索・操作を分かりやすくする基本QoL。</div></div><div class="valwrap"><div class="value">ON</div><div class="state keep">有効</div></div></div>
+     <div class="setting core"><div><div class="cat">Server</div><div class="name">PvEモード / 飛行生物の運搬</div><div class="desc">PvEで運用し、飛行生物による野生生物の運搬を許可。</div></div><div class="valwrap"><div class="value">ON</div><div class="state keep">有効</div></div></div>
+     <div class="setting core"><div><div class="cat">QoL</div><div class="name">ダメージテキスト</div><div class="desc">攻撃時のダメージ値を表示。</div></div><div class="valwrap"><div class="value">ON</div><div class="state keep">有効</div></div></div>
+     <div class="setting core"><div><div class="cat">Cryopod</div><div class="name">冷蔵庫要求 / 敵チェック</div><div class="desc">Cryopodの使用制限を軽減。</div></div><div class="valwrap"><div class="value">無効</div><div class="state keep">QoL</div></div></div>
+    </div>
+   </section>
 
- <div class="setting changed core"><div><div class="cat">Taming</div><div class="name">テイム速度</div><div class="desc">罠・気絶・餌準備は残し、待機時間を短縮。</div></div><div class="valwrap"><div class="value">4×</div><div class="state changed">1.0 → 4.0</div></div></div>
- <div class="setting changed core"><div><div class="cat">Breeding</div><div class="name">卵の孵化速度</div><div class="desc">長時間の孵化待ちを大幅短縮。</div></div><div class="valwrap"><div class="value">20×</div><div class="state changed">1.0 → 20.0</div></div></div>
- <div class="setting changed core"><div><div class="cat">Breeding</div><div class="name">赤ちゃんの成長速度</div><div class="desc">数日単位の育成を数時間へ。</div></div><div class="valwrap"><div class="value">20×</div><div class="state changed">1.0 → 20.0</div></div></div>
- <div class="setting changed"><div><div class="cat">Breeding</div><div class="name">交配可能になるまで</div><div class="desc">次の交配までの待ち時間を約1/4。</div></div><div class="valwrap"><div class="value">0.25</div><div class="state changed">期間 1/4</div></div></div>
- <div class="setting changed"><div><div class="cat">Breeding</div><div class="name">産卵可能になるまで</div><div class="desc">卵回収の待ちを軽減。</div></div><div class="valwrap"><div class="value">0.25</div><div class="state changed">期間 1/4</div></div></div>
- <div class="setting changed core"><div><div class="cat">Breeding</div><div class="name">赤ちゃんの世話の間隔</div><div class="desc">インプリント要求は約48分ごとが目安。</div></div><div class="valwrap"><div class="value">0.10</div><div class="state changed">期間 1/10</div></div></div>
- <div class="setting core"><div><div class="cat">Breeding</div><div class="name">刷り込みバフ / 1回の上昇値</div><div class="desc">繁殖個体の強さ自体は標準。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
+   <section class="section" id="changes">
+    <div class="section-head"><div><div class="section-kicker">Latest changes</div><h2>個人ワールド寄りにした主な変更</h2></div><div class="note">JSON調整前 → 現在</div></div>
+    <div class="table-wrap"><table><thead><tr><th>項目</th><th>変更前</th><th>現在</th><th>効果</th></tr></thead><tbody>
+     <tr><td>テイム速度</td><td>4.0</td><td class="current">10.0</td><td>テイム待ちをさらに短縮</td></tr>
+     <tr><td>プレイヤー攻撃力</td><td>1.0</td><td class="current">1.5</td><td>戦闘を少し楽に</td></tr>
+     <tr><td>食料 / 水 / スタミナ消費</td><td>1.0</td><td class="current">0.75</td><td>サバイバル負担を軽減</td></tr>
+     <tr><td>プレイヤー体力回復</td><td>1.0</td><td class="current">1.25</td><td>自然回復を少し速く</td></tr>
+     <tr><td>カスタムレシピ効果 / スキル</td><td>1.0 / 1.0</td><td class="current">2.0 / 2.0</td><td>カスタム料理を強化</td></tr>
+     <tr><td>クラフトスキルボーナス</td><td>1.0</td><td class="current">2.0</td><td>クラフトスキルの効果を強化</td></tr>
+     <tr><td>クレート / 釣り品質</td><td>1.0 / 1.0</td><td class="current">1.5 / 1.5</td><td>戦利品品質を少し上げる</td></tr>
+     <tr><td>刷り込み猶予期間</td><td>1.0</td><td class="current">6.0</td><td>刷り込みを逃しにくく</td></tr>
+     <tr><td>刷り込みステータス効果</td><td>1.0</td><td class="current">1.5</td><td>刷り込み個体を強化</td></tr>
+     <tr><td>作物成長速度</td><td>2.0</td><td class="current">5.0</td><td>農業を高速化</td></tr>
+     <tr><td>恐竜スタミナ消費</td><td>1.0</td><td class="current">0.75</td><td>騎乗時のスタミナ負担を軽減</td></tr>
+     <tr><td>恐竜の採取ダメージ</td><td>1.0</td><td class="current">2.0</td><td>採取恐竜を強化</td></tr>
+     <tr><td>燃料消費間隔</td><td>1.0</td><td class="current">2.0</td><td>燃料の消費間隔を延長</td></tr>
+    </tbody></table></div>
+   </section>
 
- <div class="setting changed core"><div><div class="cat">Resources</div><div class="name">採取量</div><div class="desc">採取恐竜の価値を残しつつ作業量を削減。</div></div><div class="valwrap"><div class="value">2×</div><div class="state changed">1.0 → 2.0</div></div></div>
- <div class="setting"><div><div class="cat">Resources</div><div class="name">採取物の耐久力</div><div class="desc">木や岩の硬さは標準。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
- <div class="setting changed core"><div><div class="cat">Resources</div><div class="name">資源リスポーン期間</div><div class="desc">値が小さいほど早く復活。</div></div><div class="valwrap"><div class="value">0.25</div><div class="state changed">期間 1/4</div></div></div>
- <div class="setting changed"><div><div class="cat">Resources</div><div class="name">植物の成長速度</div><div class="desc">農業の待ち時間を短縮。</div></div><div class="valwrap"><div class="value">2×</div><div class="state changed">1.0 → 2.0</div></div></div>
+   <section class="section" id="reading">
+    <div class="section-head"><div><div class="section-kicker">How to read</div><h2>倍率の読み方</h2></div></div>
+    <div class="reading"><div class="rule"><h3>大きいほど「速い / 多い / 強い」</h3><ul><li>経験値倍率</li><li>採取量</li><li>テイム速度</li><li>孵化・成長速度</li><li>作物成長速度</li><li>攻撃力・回復・刷り込み効果</li></ul></div><div class="rule"><h3>小さいほど「減りにくい / 待ち時間が短い」</h3><ul><li>食料・水・スタミナ消費</li><li>恐竜スタミナ消費</li><li>交配・産卵間隔</li><li>刷り込み要求の間隔</li><li>資源リスポーン期間</li></ul></div></div>
+   </section>
 
- <div class="setting"><div><div class="cat">Structures</div><div class="name">建築物 攻撃 / 被ダメージ</div><div class="desc">建築耐久のバランスは標準。</div></div><div class="valwrap"><div class="value">1.0</div><div class="state keep">維持</div></div></div>
-
- <div class="setting core"><div><div class="cat">QoL</div><div class="name">三人称視点</div><div class="desc">利用可能。</div></div><div class="valwrap"><div class="value">ON</div><div class="state keep">有効</div></div></div>
- <div class="setting core"><div><div class="cat">QoL</div><div class="name">マップのプレイヤー位置</div><div class="desc">初心者でも現在地を確認できる。</div></div><div class="valwrap"><div class="value">ON</div><div class="state keep">有効</div></div></div>
- <div class="setting changed core"><div><div class="cat">Server</div><div class="name">PvEモード</div><div class="desc">PvPを無効にしてPvEで運用。</div></div><div class="valwrap"><div class="value">ON</div><div class="state changed">有効化</div></div></div>
- <div class="setting changed core"><div><div class="cat">QoL</div><div class="name">PvE飛行運搬</div><div class="desc">飛行生物で野生生物を運搬可能。</div></div><div class="valwrap"><div class="value">ON</div><div class="state changed">有効化</div></div></div>
- <div class="setting core"><div><div class="cat">QoL</div><div class="name">PvEガンマ無効化</div><div class="desc">OFFのため、PvEでもガンマ調整可能。</div></div><div class="valwrap"><div class="value">OFF</div><div class="state keep">維持</div></div></div>
- <div class="setting changed core"><div><div class="cat">QoL</div><div class="name">ダメージテキスト</div><div class="desc">武器・恐竜の強さを数値で確認。</div></div><div class="valwrap"><div class="value">ON</div><div class="state changed">有効化</div></div></div>
- </div>
- </section>
-
- <section class="section" id="tuning">
- <div class="section-head">
- <div><div class="section-kicker">Next run</div><h2>次回の調整目安</h2></div>
- <div class="note">「もう少し難しく」を段階的に</div>
- </div>
-
- <div class="preset">
- <div class="preset-card">
- <div class="preset-label">MORE CASUAL</div>
- <div class="preset-name">さらに快適</div>
- <ul>
- <li>テイム 5〜6倍</li>
- <li>重量 2倍</li>
- <li>採取 2.5〜3倍</li>
- <li>資源復活 0.2</li>
- </ul>
- </div>
- <div class="preset-card reco">
- <div class="preset-label">CURRENT</div>
- <div class="preset-name">今回の設定</div>
- <ul>
- <li>経験値 1.5倍</li>
- <li>採取 2倍</li>
- <li>テイム 4倍</li>
- <li>戦闘倍率 1倍</li>
- </ul>
- </div>
- <div class="preset-card">
- <div class="preset-label">MORE SURVIVAL</div>
- <div class="preset-name">少し難しく</div>
- <ul>
- <li>経験値 1.25倍</li>
- <li>採取 1.5倍</li>
- <li>テイム 3倍</li>
- <li>重量 1.25倍</li>
- </ul>
- </div>
- </div>
-
- <div class="table-wrap" style="margin-top:14px">
- <table>
- <thead><tr><th>項目</th><th>現在</th><th>少し難しく</th><th>標準寄り</th><th>主な変化</th></tr></thead>
- <tbody>
- <tr><td>経験値</td><td class="current">1.5</td><td>1.25</td><td>1.0</td><td>レベル上げの速度</td></tr>
- <tr><td>採取量</td><td class="current">2.0</td><td>1.5</td><td>1.0</td><td>素材集めの比重</td></tr>
- <tr><td>テイム速度</td><td class="current">4.0</td><td>3.0</td><td>1.5〜2.0</td><td>捕獲後の待ち時間</td></tr>
- <tr><td>資源リスポーン</td><td class="current">0.25</td><td>0.5</td><td>1.0</td><td>採取場所のやりくり</td></tr>
- <tr><td>重量上昇率</td><td class="current">1.5</td><td>1.25</td><td>1.0</td><td>運搬恐竜の重要性</td></tr>
- <tr><td>昼 / 夜</td><td class="current">0.5 / 1.5</td><td>0.7 / 1.25</td><td>1.0 / 1.0</td><td>夜の存在感</td></tr>
- </tbody>
- </table>
- </div>
- <p class="note" style="margin:10px 2px 0">繁殖20倍は戦闘難易度よりリアル時間の負担に効く設定。難しくしたいだけなら、そのままでも問題なし。</p>
- </section>
-
- <section class="section" id="reading">
- <div class="section-head">
- <div><div class="section-kicker">How to read</div><h2>倍率の読み方</h2></div>
- </div>
- <div class="reading">
- <div class="rule">
- <h3>大きいほど「速い / 多い」</h3>
- <ul>
- <li>経験値倍率</li>
- <li>採取量</li>
- <li>テイム速度</li>
- <li>孵化速度</li>
- <li>赤ちゃん成長速度</li>
- <li>植物成長速度</li>
- </ul>
- </div>
- <div class="rule">
- <h3>小さいほど「待ち時間が短い」</h3>
- <ul>
- <li>交配可能になるまで</li>
- <li>産卵可能になるまで</li>
- <li>赤ちゃんの世話の間隔</li>
- <li>資源リスポーン期間</li>
- </ul>
- </div>
- </div>
- </section>
-
- 
- <section class="section friend" id="summary">
- <div class="section-kicker">Summary</div>
- <h2>要約</h2>
- <p class="friend-intro">今のサーバーは、<em>戦闘は普通のARK寄り</em>。素材集め・テイム・繁殖の待ち時間だけ短くした。</p>
- </section>
-
- <footer>ARK: Survival Evolved / XServer GAMEs / 2026-09</footer>
- </main>
+   <section class="section friend" id="summary"><div class="section-kicker">Summary</div><h2>要約</h2><p class="friend-intro">現在は、<em>ASAのThe Islandをかなり快適寄り</em>に調整。採取2倍・テイム10倍・繁殖20倍を中心に、プレイヤーや恐竜のスタミナ、農業、刷り込み、戦利品品質も個人ワールド寄りに緩和しています。</p></section>
+   <footer>ARK: Survival Ascended / Nitrado / The Island / PvE / 2026-09</footer>
+  </main>
  </div>
 </div>
-
 <script>
-function filterSettings(mode,button){
- document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
- button.classList.add('active');
- document.querySelectorAll('#settingGrid .setting').forEach(el=>{
- let show = mode==='all' || (mode==='changed' && el.classList.contains('changed')) || (mode==='core' && el.classList.contains('core'));
- el.classList.toggle('hidden',!show);
- });
-}
+function filterSettings(mode,button){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));button.classList.add('active');document.querySelectorAll('#settingGrid .setting').forEach(el=>{const show=mode==='all'||(mode==='changed'&&el.classList.contains('changed'))||(mode==='core'&&el.classList.contains('core'));el.classList.toggle('hidden',!show)})}
 </script>
 </body>
 </html>
